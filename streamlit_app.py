@@ -71,7 +71,7 @@ st.markdown("""
 
 #######################
 # Load data
-df_results = pd.read_csv('data/ai-model/ai-model-results.csv')
+df_results = pd.read_csv('data/ai-model/ai-model-results-smooth.csv')
 df_sports = pd.read_csv('data/wearable/sports-results.csv')
 df_sleep = pd.read_csv('data/wearable/sleep-results.csv')
 df_calendar = pd.read_csv('data/calendar/calendar-results.csv')
@@ -89,14 +89,13 @@ def date_to_text(df_results, date_list):
     return date_text_list
 
 def weekday_summary_peaks(df_results):
-    result_score_10 = df_results[df_results['Stress score'] >= 8]
+    result_score_10 = df_results[df_results['score_smooth'] >= 8]
     date_list_score = result_score_10.groupby(['date']).count()    
     date_list_score['date'] = date_list_score.index
     date_text = date_to_text(result_score_10, date_list_score['date'].values)
     date_list_score.insert(0, 'Day/Month/Weekday', date_text)
     date_list_score = date_list_score[['date', 'Day/Month/Weekday', 'Stress score']]
     date_list_score.rename(columns={"Stress score": "Counted stress peaks"}, inplace = True)
-    date_list_score = date_list_score.sort_values(by=['Day/Month/Weekday'])
     return date_list_score
 
 ### CALENDAR
@@ -139,31 +138,18 @@ def clear_text():
 # Sidebar
 with st.sidebar:
     st.image("illuminateMe_logo.png")  
-    
-    # SCORE OVERVIEW
-    
-    # SCORE SELECTION
-    # Stress scale:
-    # 1: diff == 0-5
-    # 2: diff == 5-10
-    # 4: diff == 10-20
-    # 6: diff == 20-30
-    # 8: diff == 30-40
-    # 10: diff == 40-   
-    stress_scores = [10, 8, 6, 4, 2, 1]
+
     all_weekdays = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
-    selected_score = st.selectbox('Select score', stress_scores)
-    df_score = df_results[df_results['Stress score'] >= selected_score]
+    selected_weekday = st.selectbox('Select weekday', all_weekdays)
     df_period_peak_summary = weekday_summary_peaks(df_results)
     print(df_period_peak_summary)
        
     # DATE SELECTION
-    date_list_score = df_score.groupby(['date']).count()
-    date_list = date_list_score.index
+    date_list = df_period_peak_summary.index
   
     # SELECTED DATES
     selected_date = st.selectbox('Select a date', date_list)
-    df_date_score = df_score[df_score.date == selected_date]
+    df_date_score = df_results[df_results.date == selected_date]
     list_of_peaks = calendar_popdown(df_date_score)
         
     df_date = df_results[df_results.date == selected_date]
