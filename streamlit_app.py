@@ -142,17 +142,17 @@ with st.sidebar:
     all_weekdays = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
     selected_weekday = st.selectbox('Select weekday', all_weekdays)
     df_period_peak_summary = weekday_summary_peaks(df_results)
-    print(df_period_peak_summary)
        
     # DATE SELECTION
     date_list = df_period_peak_summary.index
   
     # SELECTED DATES
-    selected_date = st.selectbox('Select a date', date_list)
-    df_date_score = df_results[df_results.date == selected_date]
-    list_of_peaks = calendar_popdown(df_date_score)
+    selected_date = st.selectbox('Select a date', date_list)    
         
     df_date = df_results[df_results.date == selected_date]
+    df_date_score = df_date[df_date.score_smooth >= 8]
+    print(df_date_score)
+    list_of_peaks = calendar_popdown(df_date_score)
     selected_weekday = df_date['weekday_text'].iloc[0]
 
     # SPORT
