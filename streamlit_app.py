@@ -230,53 +230,8 @@ st.caption("_Client_")
 st.subheader('Anna Andersson')
 col = st.columns((3.0, 5.5), gap='medium')
 
-with col[0]:
-    st.markdown('#### Stress peaks')
-    st.caption("The selected day is a _:blue[" + selected_weekday + "]_")
-    st.dataframe(df_date_score,
-                 column_order=("date", "time", "score_smooth"),
-                 hide_index=True,
-                 width=None,
-                 column_config={
-                    "date": st.column_config.TextColumn(
-                        "Date",
-                    ),
-                    "time": st.column_config.TextColumn(
-                        "Time",
-                    ),
-                    "score": st.column_config.ProgressColumn(
-                        "Score",
-                        format="%f",
-                        min_value=0,
-                        max_value=max(df_date_score['score_smooth']),
-                     )}
-                 )
-
-    st.markdown('#### Period summary')  
-    st.caption("Detected _:blue[stress peaks]_ for this period")
-    summary_peaks_score_plot = make_barplot(df_period_peak_summary, 'date', 'Counted stress peaks')
-    st.altair_chart(summary_peaks_score_plot, use_container_width=True)
-    
-    st.markdown('#### Sleep')
-    st.caption("You where sleeping for _:blue[" + df_sleep_date['totalSleep_hours'].values[0] + "]_  at selected date")
-    categories_sleep = ['deep sleep', 'shallow sleep', 'awake']
-    values = df_sleep_date[['DeepSleep %', 'ShallowSleep %', 'Awake %']].values[0]
-    source = pd.DataFrame({
-        "category": categories_sleep,
-        "value": values
-    })
-    donut_sleep = make_donut(source)
-    st.altair_chart(donut_sleep, use_container_width=True)
-    
-    with st.expander('About deep sleep', expanded=True):
-        st.caption('''
-            Deep sleep typically happen during the first half of the night. 
-            It is recommended to aim for about _:blue[13 to 23 percent]_ of your sleep 
-            to be in this stages. This means - if you sleep 8 hours, you should 
-            aim to get between an hour or just under two hours of deep sleep.
-            ''')
-    
-with col[1]:  
+   
+with col[0]:  
     st.markdown('#### Energy balance') 
     st.caption("_:blue[Energy inputs/outputs]_ at selected day")
     st.line_chart(df_energy_plot, x="time", y="energy", color="label") 
@@ -334,6 +289,32 @@ with col[1]:
     components.iframe("https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Europe%2FStockholm&showPrint=0&src=ZW1lbGllLmNoYW5kbmkuanV0dmlrQGdtYWlsLmNvbQ&src=c2MzaW9zNW1wcnBrb2k4MTc5YmgyYXJnZzBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=YzUzMWYxMjhiNTg5YTBkMDlhMjNlYWJhZGVmNmI5MmU3ODNkYjhmYjQzOGUwM2VhMzllNDg0OGM0NDc3NWFhZUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=MHBpM2c3cWxmbG1sa2pnNzI4ZzRyNmJ1MmtAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=NDE1dDNtcTJsbG5xZ2U3MWloYzVob2kwNHNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=ZjZ1ZGVkNGNkbGwyYnVwODI5bTRyOGdlZHNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=cjVrODc5NzZqaGoxNGsybmJuNnR1MWZ1YWNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=MGQyNDU4YmNiNGU5ODE0ZTIwNTA5ZDI0NGRkNjNhODIxNGQ2ZTZmMjU2NGM3ZjIzZmMxYzYyNTFkOWI2MjgxMEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=Y2VhY2ZhOTM2OWMyNDY5MmIwNjE4NzdiZWRhMmE2NzJmM2Q2MmIwZjQ5YjYxM2Q0NjliZDQ4MGJiMGM0ZTE2YUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=MmU3YmI1ZWE0MzczODM2M2VhMDMzZTgwODFmNmMyNTA0OTlkMWIxNjYwNGQzMzFiZjUwMzNiOGY2ZjU2NDEzZEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=aHQzamxmYWFjNWxmZDYyNjN1bGZoNHRxbDhAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%23EF6C00&color=%237CB342&color=%23795548&color=%23E67C73&color=%23D81B60&color=%23B39DDB&color=%23F6BF26&color=%238E24AA&color=%234285F4&color=%23009688&color=%23B39DDB", width=800, height=600)
     
 
-    
+    with col[1]:  
+        st.markdown('#### Energy balance') 
+        st.caption("_:blue[Energy inputs/outputs]_ at selected day")
+        st.line_chart(df_energy_plot, x="time", y="energy", color="label") 
+        
+        st.markdown('#### Activity')  
+        st.caption("_:blue[Wearable activities]_ from selected day")
+        barplot_sport = make_barplot(df_activity, 'energy', 'time')
+        st.altair_chart(barplot_sport, use_container_width=True)
+            
+        st.markdown('#### Events') 
+        st.caption("_:blue[Calendar notes]_ from selected day")
+        st.dataframe(df_calendar_date,
+                     column_order=("date", "time", "event"),
+                     hide_index=True,
+                     width=600,
+                     column_config={
+                        "date": st.column_config.TextColumn(
+                            "Date",
+                        ),
+                        "time": st.column_config.TextColumn(
+                            "Time",
+                        ),
+                        "event": st.column_config.TextColumn(
+                            "Description",
+                        )}
+                     )  
 
     

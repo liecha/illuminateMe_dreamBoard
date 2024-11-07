@@ -137,3 +137,52 @@ with col[2]:
         button_check = st.form_submit_button("Save")
         if input_test:
             input_test = placeholder.text_input('Make your note', value='', key=1)
+            
+
+
+
+with col[0]:
+    st.markdown('#### Stress peaks')
+    st.caption("The selected day is a _:blue[" + selected_weekday + "]_")
+    st.dataframe(df_date_score,
+                 column_order=("date", "time", "score_smooth"),
+                 hide_index=True,
+                 width=None,
+                 column_config={
+                    "date": st.column_config.TextColumn(
+                        "Date",
+                    ),
+                    "time": st.column_config.TextColumn(
+                        "Time",
+                    ),
+                    "score": st.column_config.ProgressColumn(
+                        "Score",
+                        format="%f",
+                        min_value=0,
+                        max_value=max(df_date_score['score_smooth']),
+                     )}
+                 )
+
+    st.markdown('#### Period summary')  
+    st.caption("Detected _:blue[stress peaks]_ for this period")
+    summary_peaks_score_plot = make_barplot(df_period_peak_summary, 'date', 'Counted stress peaks')
+    st.altair_chart(summary_peaks_score_plot, use_container_width=True)
+    
+    st.markdown('#### Sleep')
+    st.caption("You where sleeping for _:blue[" + df_sleep_date['totalSleep_hours'].values[0] + "]_  at selected date")
+    categories_sleep = ['deep sleep', 'shallow sleep', 'awake']
+    values = df_sleep_date[['DeepSleep %', 'ShallowSleep %', 'Awake %']].values[0]
+    source = pd.DataFrame({
+        "category": categories_sleep,
+        "value": values
+    })
+    donut_sleep = make_donut(source)
+    st.altair_chart(donut_sleep, use_container_width=True)
+    
+    with st.expander('About deep sleep', expanded=True):
+        st.caption('''
+            Deep sleep typically happen during the first half of the night. 
+            It is recommended to aim for about _:blue[13 to 23 percent]_ of your sleep 
+            to be in this stages. This means - if you sleep 8 hours, you should 
+            aim to get between an hour or just under two hours of deep sleep.
+            ''')
