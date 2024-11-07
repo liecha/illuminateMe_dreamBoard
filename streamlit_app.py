@@ -277,18 +277,6 @@ with col[0]:
 with col[1]:  
     st.markdown('#### Energy balance') 
     st.caption("_:blue[Energy inputs/outputs]_ at selected day")
-    lineplot_score = make_lineplot(df_energy_date, 'energy', 'time')
-    st.altair_chart(lineplot_score, use_container_width=True)
-    
-    
-    chart_data = pd.DataFrame(
-    {
-        "col1": np.random.randn(20),
-        "col2": np.random.randn(20),
-        "col3": np.random.choice(["A", "B", "C"], 20),
-    }
-    )
-    
     st.line_chart(df_energy_date_test, x="time", y="energy", color="label") 
     
     st.markdown('#### Activity')  
