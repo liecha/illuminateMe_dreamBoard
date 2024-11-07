@@ -220,13 +220,11 @@ col = st.columns((5.5, 5.5), gap='medium')
 with col[0]:  
     st.markdown('#### Energy balance') 
     st.caption("_:blue[Energy inputs/outputs]_ at selected day")
-    st.line_chart(df_energy_plot, x="time", y="energy", color="label") 
+    st.bar_chart(df_energy_plot, x="time", y="energy", color="label") 
     
     st.markdown('#### Activity')  
     st.caption("_:blue[Wearable activities]_ from selected day")
-    barplot_sport = make_barplot(df_activity, 'energy', 'time')
-    st.altair_chart(barplot_sport, use_container_width=True)
-    st.bar_chart(df_energy_plot, x="time", y="energy", color="label") 
+    st.bar_chart(df_activity, x="time", y="energy", color="activity") 
     
 with col[1]:     
     st.markdown('#### Events') 
