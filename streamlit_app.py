@@ -154,47 +154,37 @@ def clear_text():
     st.session_state.widget = ""
 
 #######################
-# Sidebar
-with st.sidebar:
-    st.image("illuminateMe_logo.png")  
-
-    all_weekdays = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
-    selected_weekday = st.selectbox('Select weekday', all_weekdays)
-    df_period_peak_summary = weekday_summary_peaks(df_results)
-       
-    # DATE SELECTION
-    date_list = df_period_peak_summary.index
   
-    # SELECTED DATES
-    selected_date = st.selectbox('Select a date', '2024-11-04') #date_list
-        
-    df_date = df_results[df_results.date == selected_date]
-    df_date_score = df_date[df_date.score_smooth >= 8]
-    list_of_peaks = calendar_popdown(df_date_score)
-    selected_weekday = df_date['weekday_text'].iloc[0]
+# SELECTED DATES
+selected_date = st.selectbox('Select a date', '2024-11-04') #date_list
     
-    # ENERGY
-    df_energy_date = df_energy[df_energy['date'] == selected_date]
-    df_energy_plot = energy_differ(df_energy_date)
+df_date = df_results[df_results.date == selected_date]
+df_date_score = df_date[df_date.score_smooth >= 8]
+list_of_peaks = calendar_popdown(df_date_score)
+selected_weekday = df_date['weekday_text'].iloc[0]
 
-    
-    # ACTIVITY
-    df_activity = df_energy_date[df_energy_date['activity'] != 'rest']
-    print(df_activity)
-    
-
-    # SPORT
-    df_sports_date = df_sports[df_sports['Date'] == selected_date]
+# ENERGY
+df_energy_date = df_energy[df_energy['date'] == selected_date]
+df_energy_plot = energy_differ(df_energy_date)
 
 
-    # SLEEP
-    df_sleep_date = df_sleep[df_sleep['date'] == selected_date]
-    
-    # CALENDAR   
-    df_calendar_date = calendar_selection(df_calendar, selected_date)
-    
-    # NOTES  
-    df_note_date = note_selection(df_notes, selected_date)
+# ACTIVITY
+df_activity = df_energy_date[df_energy_date['activity'] != 'rest']
+print(df_activity)
+
+
+# SPORT
+df_sports_date = df_sports[df_sports['Date'] == selected_date]
+
+
+# SLEEP
+df_sleep_date = df_sleep[df_sleep['date'] == selected_date]
+
+# CALENDAR   
+df_calendar_date = calendar_selection(df_calendar, selected_date)
+
+# NOTES  
+df_note_date = note_selection(df_notes, selected_date)
 
 
 #######################
