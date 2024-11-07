@@ -157,6 +157,7 @@ with st.sidebar:
     
     # ENERGY
     df_energy_date = df_energy[df_energy['date'] == selected_date]
+    print(df_energy_date)
 
     # SPORT
     df_sports_date = df_sports[df_sports['Date'] == selected_date]
