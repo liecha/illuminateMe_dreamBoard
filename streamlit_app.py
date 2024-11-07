@@ -1,8 +1,8 @@
 #######################
 # Import libraries
 import streamlit as st
+import streamlit.components.v1 as components
 import pandas as pd
-import numpy as np
 import altair as alt
 
 #######################
@@ -328,6 +328,8 @@ with col[1]:
     )  
     st.text_input('Create a note:', key='widget', on_change=clear_text)
     my_text = st.session_state.get('my_text', '')
+    
+    components.iframe("https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Europe%2FStockholm&showPrint=0&src=ZW1lbGllLmNoYW5kbmkuanV0dmlrQGdtYWlsLmNvbQ&src=c2MzaW9zNW1wcnBrb2k4MTc5YmgyYXJnZzBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=YzUzMWYxMjhiNTg5YTBkMDlhMjNlYWJhZGVmNmI5MmU3ODNkYjhmYjQzOGUwM2VhMzllNDg0OGM0NDc3NWFhZUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=MHBpM2c3cWxmbG1sa2pnNzI4ZzRyNmJ1MmtAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=NDE1dDNtcTJsbG5xZ2U3MWloYzVob2kwNHNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=ZjZ1ZGVkNGNkbGwyYnVwODI5bTRyOGdlZHNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=cjVrODc5NzZqaGoxNGsybmJuNnR1MWZ1YWNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=MGQyNDU4YmNiNGU5ODE0ZTIwNTA5ZDI0NGRkNjNhODIxNGQ2ZTZmMjU2NGM3ZjIzZmMxYzYyNTFkOWI2MjgxMEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=Y2VhY2ZhOTM2OWMyNDY5MmIwNjE4NzdiZWRhMmE2NzJmM2Q2MmIwZjQ5YjYxM2Q0NjliZDQ4MGJiMGM0ZTE2YUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=MmU3YmI1ZWE0MzczODM2M2VhMDMzZTgwODFmNmMyNTA0OTlkMWIxNjYwNGQzMzFiZjUwMzNiOGY2ZjU2NDEzZEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=aHQzamxmYWFjNWxmZDYyNjN1bGZoNHRxbDhAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%23EF6C00&color=%237CB342&color=%23795548&color=%23E67C73&color=%23D81B60&color=%23B39DDB&color=%23F6BF26&color=%238E24AA&color=%234285F4&color=%23009688&color=%23B39DDB", width=800, height=600)
     
 
     
