@@ -101,8 +101,21 @@ def weekday_summary_peaks(df_results):
     return date_list_score
 
 ### ENERGY
-def energy_differ():
-    print('hello')
+def energy_differ(df_energy_date):
+    data_e = {
+        'energy': df_energy_date['energy'].values,
+        'time':df_energy_date['time'].values,
+        'label': ['in_out'] * len(df_energy_date)
+        }
+    df_e = pd.DataFrame(data_e)
+    data_acc = {
+        'energy': df_energy_date['energy_acc'].values,
+        'time':df_energy_date['time'].values,
+        'label': ['energy_acc'] * len(df_energy_date)
+        }
+    df_acc = pd.DataFrame(data_acc)
+    df_energy_date_final = pd.concat([df_e, df_acc])
+    return df_energy_date_final
 
 ### CALENDAR
 def calendar_selection(df_calendar, selected_date):
@@ -162,23 +175,12 @@ with st.sidebar:
     
     # ENERGY
     df_energy_date = df_energy[df_energy['date'] == selected_date]
-    data_e = {
-        'energy': df_energy_date['energy'].values,
-        'time':df_energy_date['time'].values,
-        'label': ['in_out'] * len(df_energy_date)
-        }
-    df_e = pd.DataFrame(data_e)
-    data_acc = {
-        'energy': df_energy_date['energy_acc'].values,
-        'time':df_energy_date['time'].values,
-        'label': ['energy_acc'] * len(df_energy_date)
-        }
-    df_acc = pd.DataFrame(data_acc)
-    df_energy_date_test = pd.concat([df_e, df_acc])
-    print(df_energy_date)
+    df_energy_plot = energy_differ(df_energy_date)
+
     
     # ACTIVITY
     df_activity = df_energy_date[df_energy_date['activity'] != 'rest']
+    print(df_activity)
     
 
     # SPORT
@@ -277,11 +279,11 @@ with col[0]:
 with col[1]:  
     st.markdown('#### Energy balance') 
     st.caption("_:blue[Energy inputs/outputs]_ at selected day")
-    st.line_chart(df_energy_date_test, x="time", y="energy", color="label") 
+    st.line_chart(df_energy_plot, x="time", y="energy", color="label") 
     
     st.markdown('#### Activity')  
     st.caption("_:blue[Wearable activities]_ from selected day")
-    barplot_sport = make_barplot(df_sports_date, 'Activity (minutes)', 'time')
+    barplot_sport = make_barplot(df_activity, 'duration', 'time')
     st.altair_chart(barplot_sport, use_container_width=True)
         
     st.markdown('#### Events') 
