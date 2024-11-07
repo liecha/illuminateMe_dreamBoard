@@ -256,6 +256,11 @@ with col[1]:
     st.caption("_:blue[Energy inputs/outputs]_ at selected day")
     lineplot_score = make_lineplot(df_energy_date, 'energy', 'time')
     st.altair_chart(lineplot_score, use_container_width=True)
+    
+    st.markdown('#### Activity')  
+    st.caption("_:blue[Wearable activities]_ from selected day")
+    barplot_sport = make_barplot(df_sports_date, 'Time / Activity', 'Activity (minutes)')
+    st.altair_chart(barplot_sport, use_container_width=True)
         
     st.markdown('#### Events') 
     st.caption("_:blue[Calendar notes]_ from selected day")
@@ -302,10 +307,7 @@ with col[1]:
     st.text_input('Create a note:', key='widget', on_change=clear_text)
     my_text = st.session_state.get('my_text', '')
     
-    st.markdown('#### Activity')  
-    st.caption("_:blue[Wearable activities]_ from selected day")
-    barplot_sport = make_barplot(df_sports_date, 'Time / Activity', 'Activity (minutes)')
-    st.altair_chart(barplot_sport, use_container_width=True)
+
     
 
     
