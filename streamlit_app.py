@@ -281,7 +281,7 @@ with col[1]:
     
     st.markdown('#### Activity')  
     st.caption("_:blue[Wearable activities]_ from selected day")
-    barplot_sport = make_barplot(df_sports_date, 'Time / Activity', 'Activity (minutes)')
+    barplot_sport = make_barplot(df_sports_date, 'Activity (minutes)', 'time')
     st.altair_chart(barplot_sport, use_container_width=True)
         
     st.markdown('#### Events') 
