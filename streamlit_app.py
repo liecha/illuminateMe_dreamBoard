@@ -162,6 +162,19 @@ with st.sidebar:
     
     # ENERGY
     df_energy_date = df_energy[df_energy['date'] == selected_date]
+    data_e = {
+        'energy': df_energy_date['energy'].values,
+        'time':df_energy_date['time'].values,
+        'label': ['in_out'] * len(df_energy_date)
+        }
+    df_e = pd.DataFrame(data_e)
+    data_acc = {
+        'energy': df_energy_date['energy_acc'].values,
+        'time':df_energy_date['time'].values,
+        'label': ['energy_acc'] * len(df_energy_date)
+        }
+    df_acc = pd.DataFrame(data_acc)
+    df_energy_date = pd.concat([df_e, df_acc])
     print(df_energy_date)
     
     # ACTIVITY
@@ -276,7 +289,7 @@ with col[1]:
     }
     )
     
-    st.line_chart(df_energy_date, x="time", y="energy") #color="col3"
+    st.line_chart(df_energy_date, x="time", y="energy", color="label") 
     
     st.markdown('#### Activity')  
     st.caption("_:blue[Wearable activities]_ from selected day")
