@@ -184,8 +184,6 @@ def make_donut(source):
 # Dashboard Main Panel
 st.caption("_Client_")
 st.subheader('Anna Andersson')
-col = st.columns((5.5, 5.5), gap='medium')
-
 
 #######################
 # SELECTED DATES
@@ -217,7 +215,8 @@ df_calendar_date = calendar_selection(df_calendar, selected_date)
 # NOTES  
 df_note_date = note_selection(df_notes, selected_date)
 #######################
-   
+
+col = st.columns((5.5, 5.5), gap='medium') 
 with col[0]:  
     st.markdown('#### Energy balance') 
     st.caption("_:blue[Energy inputs/outputs]_ at selected day")
