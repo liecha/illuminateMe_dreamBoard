@@ -154,40 +154,6 @@ def clear_text():
     st.session_state.widget = ""
 
 #######################
-  
-# SELECTED DATES
-selected_date = st.selectbox('Select a date', '2024-11-04') #date_list
-    
-df_date = df_results[df_results.date == selected_date]
-df_date_score = df_date[df_date.score_smooth >= 8]
-list_of_peaks = calendar_popdown(df_date_score)
-selected_weekday = df_date['weekday_text'].iloc[0]
-
-# ENERGY
-df_energy_date = df_energy[df_energy['date'] == selected_date]
-df_energy_plot = energy_differ(df_energy_date)
-
-
-# ACTIVITY
-df_activity = df_energy_date[df_energy_date['activity'] != 'rest']
-print(df_activity)
-
-
-# SPORT
-df_sports_date = df_sports[df_sports['Date'] == selected_date]
-
-
-# SLEEP
-df_sleep_date = df_sleep[df_sleep['date'] == selected_date]
-
-# CALENDAR   
-df_calendar_date = calendar_selection(df_calendar, selected_date)
-
-# NOTES  
-df_note_date = note_selection(df_notes, selected_date)
-
-
-#######################
 # Plots
 
 # Line plit
@@ -220,6 +186,37 @@ st.caption("_Client_")
 st.subheader('Anna Andersson')
 col = st.columns((5.5, 5.5), gap='medium')
 
+
+#######################
+# SELECTED DATES
+selected_date = st.selectbox('Select a date', '2024-11-04') #date_list   
+df_date = df_results[df_results.date == selected_date]
+df_date_score = df_date[df_date.score_smooth >= 8]
+list_of_peaks = calendar_popdown(df_date_score)
+selected_weekday = df_date['weekday_text'].iloc[0]
+
+# ENERGY
+df_energy_date = df_energy[df_energy['date'] == selected_date]
+df_energy_plot = energy_differ(df_energy_date)
+
+# ACTIVITY
+df_activity = df_energy_date[df_energy_date['activity'] != 'rest']
+print(df_activity)
+
+
+# SPORT
+df_sports_date = df_sports[df_sports['Date'] == selected_date]
+
+
+# SLEEP
+df_sleep_date = df_sleep[df_sleep['date'] == selected_date]
+
+# CALENDAR   
+df_calendar_date = calendar_selection(df_calendar, selected_date)
+
+# NOTES  
+df_note_date = note_selection(df_notes, selected_date)
+#######################
    
 with col[0]:  
     st.markdown('#### Energy balance') 
