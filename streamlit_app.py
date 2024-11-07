@@ -174,7 +174,7 @@ with st.sidebar:
         'label': ['energy_acc'] * len(df_energy_date)
         }
     df_acc = pd.DataFrame(data_acc)
-    df_energy_date = pd.concat([df_e, df_acc])
+    df_energy_date_test = pd.concat([df_e, df_acc])
     print(df_energy_date)
     
     # ACTIVITY
@@ -289,7 +289,7 @@ with col[1]:
     }
     )
     
-    st.line_chart(df_energy_date, x="time", y="energy", color="label") 
+    st.line_chart(df_energy_date_test, x="time", y="energy", color="label") 
     
     st.markdown('#### Activity')  
     st.caption("_:blue[Wearable activities]_ from selected day")
