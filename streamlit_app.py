@@ -253,8 +253,8 @@ with col[0]:
     
 with col[1]:  
     st.markdown('#### Energy balance') 
-    st.caption("All _:blue[stress scores]_ at selected day")
-    lineplot_score = make_lineplot(df_energy_date, 'energy_acc', 'time')
+    st.caption("_:blue[Energy inputs/outputs]_ at selected day")
+    lineplot_score = make_lineplot(df_energy_date, 'energy', 'time')
     st.altair_chart(lineplot_score, use_container_width=True)
         
     st.markdown('#### Events') 
