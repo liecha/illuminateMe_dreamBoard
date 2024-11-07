@@ -99,6 +99,10 @@ def weekday_summary_peaks(df_results):
     date_list_score.rename(columns={"Stress score": "Counted stress peaks"}, inplace = True)
     return date_list_score
 
+### ENERGY
+def energy_differ():
+    print('hello')
+
 ### CALENDAR
 def calendar_selection(df_calendar, selected_date):
     df_calendar_date = df_calendar[df_calendar['date'] == selected_date]    
@@ -158,9 +162,14 @@ with st.sidebar:
     # ENERGY
     df_energy_date = df_energy[df_energy['date'] == selected_date]
     print(df_energy_date)
+    
+    # ACTIVITY
+    df_activity = df_energy_date[df_energy_date['activity'] != 'rest']
+    
 
     # SPORT
     df_sports_date = df_sports[df_sports['Date'] == selected_date]
+
 
     # SLEEP
     df_sleep_date = df_sleep[df_sleep['date'] == selected_date]
@@ -256,6 +265,7 @@ with col[1]:
     st.caption("_:blue[Energy inputs/outputs]_ at selected day")
     lineplot_score = make_lineplot(df_energy_date, 'energy', 'time')
     st.altair_chart(lineplot_score, use_container_width=True)
+    st.line_chart(df_energy_date)
     
     st.markdown('#### Activity')  
     st.caption("_:blue[Wearable activities]_ from selected day")
