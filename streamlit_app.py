@@ -2,6 +2,7 @@
 # Import libraries
 import streamlit as st
 import pandas as pd
+import numpy as np
 import altair as alt
 
 #######################
@@ -265,7 +266,17 @@ with col[1]:
     st.caption("_:blue[Energy inputs/outputs]_ at selected day")
     lineplot_score = make_lineplot(df_energy_date, 'energy', 'time')
     st.altair_chart(lineplot_score, use_container_width=True)
-    st.line_chart(df_energy_date)
+    
+    
+    chart_data = pd.DataFrame(
+    {
+        "col1": np.random.randn(20),
+        "col2": np.random.randn(20),
+        "col3": np.random.choice(["A", "B", "C"], 20),
+    }
+    )
+    
+    st.line_chart(chart_data, x="col1", y="col2", color="col3")
     
     st.markdown('#### Activity')  
     st.caption("_:blue[Wearable activities]_ from selected day")
