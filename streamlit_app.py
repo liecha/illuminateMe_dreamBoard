@@ -72,6 +72,7 @@ st.markdown("""
 #######################
 # Load data
 df_results = pd.read_csv('data/ai-model/ai-model-results-smooth.csv')
+df_energy = pd.read_csv('data/wearable/energy-results.csv')
 df_sports = pd.read_csv('data/wearable/sports-results.csv')
 df_sleep = pd.read_csv('data/wearable/sleep-results.csv')
 df_calendar = pd.read_csv('data/calendar/calendar-results.csv')
@@ -147,13 +148,15 @@ with st.sidebar:
     date_list = df_period_peak_summary.index
   
     # SELECTED DATES
-    selected_date = st.selectbox('Select a date', date_list)    
+    selected_date = st.selectbox('Select a date', '2024-11-04') #date_list
         
     df_date = df_results[df_results.date == selected_date]
     df_date_score = df_date[df_date.score_smooth >= 8]
-    print(df_date_score)
     list_of_peaks = calendar_popdown(df_date_score)
     selected_weekday = df_date['weekday_text'].iloc[0]
+    
+    # ENERGY
+    df_energy_date = df_energy[df_energy['date'] == selected_date]
 
     # SPORT
     df_sports_date = df_sports[df_sports['Date'] == selected_date]
@@ -247,7 +250,12 @@ with col[0]:
             aim to get between an hour or just under two hours of deep sleep.
             ''')
     
-with col[1]:          
+with col[1]:  
+    st.markdown('#### Energy balance') 
+    st.caption("All _:blue[stress scores]_ at selected day")
+    lineplot_score = make_lineplot(df_energy_date, 'energy_acc', 'time')
+    st.altair_chart(lineplot_score, use_container_width=True)
+        
     st.markdown('#### Events') 
     st.caption("_:blue[Calendar notes]_ from selected day")
     st.dataframe(df_calendar_date,
@@ -298,8 +306,5 @@ with col[1]:
     barplot_sport = make_barplot(df_sports_date, 'Time / Activity', 'Activity (minutes)')
     st.altair_chart(barplot_sport, use_container_width=True)
     
-    st.markdown('#### Day overview') 
-    st.caption("All _:blue[stress scores]_ at selected day")
-    lineplot_score = make_lineplot(df_date, 'score_smooth', 'time')
-    st.altair_chart(lineplot_score, use_container_width=True)
+
     
