@@ -187,7 +187,7 @@ st.subheader('Emelie Chandni Jutvik')
 
 #######################
 # SELECTED DATES
-selected_date = st.selectbox('Select a date', '2024-11-04') #date_list   
+selected_date = st.selectbox('Select a date', '2024-11-06') #date_list   
 df_date = df_results[df_results.date == selected_date]
 df_date_score = df_date[df_date.score_smooth >= 8]
 list_of_peaks = calendar_popdown(df_date_score)
