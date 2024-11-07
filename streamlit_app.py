@@ -276,7 +276,7 @@ with col[1]:
     }
     )
     
-    st.line_chart(chart_data, x="col1", y="col2", color="col3")
+    st.line_chart(df_energy_date, x="time", y="energy") #color="col3"
     
     st.markdown('#### Activity')  
     st.caption("_:blue[Wearable activities]_ from selected day")
