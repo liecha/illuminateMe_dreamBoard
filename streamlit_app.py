@@ -182,8 +182,8 @@ def make_donut(source):
 
 #######################
 # Dashboard Main Panel
-st.caption("_Client_")
-st.subheader('Anna Andersson')
+st.caption("_User_")
+st.subheader('Emelie Chandni Jutvik')
 
 #######################
 # SELECTED DATES
