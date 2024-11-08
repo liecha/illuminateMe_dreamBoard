@@ -191,7 +191,7 @@ selected_date = st.selectbox('Select a date', ['2024-11-04', '2024-11-05', '2024
 df_date = df_results[df_results.date == selected_date]
 df_date_score = df_date[df_date.score_smooth >= 8]
 list_of_peaks = calendar_popdown(df_date_score)
-selected_weekday = df_date['weekday_text'].iloc[0]
+#selected_weekday = df_date['weekday_text'].iloc[0]
 
 # ENERGY
 df_energy_date = df_energy[df_energy['date'] == selected_date]
