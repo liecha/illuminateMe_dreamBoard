@@ -72,11 +72,12 @@ st.markdown("""
 #######################
 # Load data
 df_results = pd.read_csv('data/ai-model/ai-model-results-smooth.csv')
-df_energy = pd.read_csv('data/wearable/energy-results.csv')
 df_sports = pd.read_csv('data/wearable/sports-results.csv')
 df_sleep = pd.read_csv('data/wearable/sleep-results.csv')
 df_calendar = pd.read_csv('data/calendar/calendar-results.csv')
 df_notes = pd.read_csv('data/notes/note-results.csv')
+
+df_energy = pd.read_csv('data/energy-results.csv')
 #######################
 # Selection functions
 
@@ -102,15 +103,15 @@ def weekday_summary_peaks(df_results):
 ### ENERGY
 def energy_differ(df_energy_date):
     data_e = {
-        'energy': df_energy_date['energy'].values,
+        'energy': df_energy_date['calorie'].values,
         'time':df_energy_date['time'].values,
         'label': ['in_out'] * len(df_energy_date)
         }
     df_e = pd.DataFrame(data_e)
     data_acc = {
-        'energy': df_energy_date['energy_acc'].values,
+        'energy': df_energy_date['calorie_acc'].values,
         'time':df_energy_date['time'].values,
-        'label': ['energy_acc'] * len(df_energy_date)
+        'label': ['calorie_acc'] * len(df_energy_date)
         }
     df_acc = pd.DataFrame(data_acc)
     df_energy_date_final = pd.concat([df_e, df_acc])
@@ -195,10 +196,10 @@ selected_weekday = df_date['weekday_text'].iloc[0]
 # ENERGY
 df_energy_date = df_energy[df_energy['date'] == selected_date]
 df_energy_plot = energy_differ(df_energy_date)
+print(df_energy_date)
 
 # ACTIVITY
-df_activity = df_energy_date[df_energy_date['activity'] != 'rest']
-print(df_activity)
+df_activity = df_energy_date[df_energy_date['section'] != 'REST']
 
 # SPORT
 df_sports_date = df_sports[df_sports['Date'] == selected_date]
@@ -224,7 +225,7 @@ with col[0]:
 with col[1]: 
     st.markdown('#### Activity')  
     st.caption("_:blue[Wearable activities]_ from selected day")
-    st.bar_chart(df_energy_date, x="time", y="energy", color="activity") 
+    st.bar_chart(df_energy_date, x="time", y="calorie", color="section") 
     
     st.markdown('#### Events') 
     st.caption("_:blue[Calendar notes]_ from selected day")
