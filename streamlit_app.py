@@ -219,11 +219,13 @@ with col[0]:
     st.caption("_:blue[Energy inputs/outputs]_ at selected day")
     st.bar_chart(df_energy_plot, x="time", y="energy", color="label") 
     
+
+    
+with col[1]: 
     st.markdown('#### Activity')  
     st.caption("_:blue[Wearable activities]_ from selected day")
     st.bar_chart(df_energy_date, x="time", y="energy", color="activity") 
     
-with col[1]:     
     st.markdown('#### Events') 
     st.caption("_:blue[Calendar notes]_ from selected day")
     st.dataframe(df_calendar_date,
