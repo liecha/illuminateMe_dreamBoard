@@ -200,10 +200,8 @@ df_energy_plot = energy_differ(df_energy_date)
 df_activity = df_energy_date[df_energy_date['activity'] != 'rest']
 print(df_activity)
 
-
 # SPORT
 df_sports_date = df_sports[df_sports['Date'] == selected_date]
-
 
 # SLEEP
 df_sleep_date = df_sleep[df_sleep['date'] == selected_date]
@@ -223,7 +221,7 @@ with col[0]:
     
     st.markdown('#### Activity')  
     st.caption("_:blue[Wearable activities]_ from selected day")
-    st.bar_chart(df_activity, x="time", y="energy", color="activity") 
+    st.bar_chart(df_energy_date, x="time", y="energy", color="activity") 
     
 with col[1]:     
     st.markdown('#### Events') 
