@@ -1,6 +1,7 @@
 #######################
 # Import libraries
 import streamlit as st
+from datetime import datetime
 import pandas as pd
 import altair as alt
 
@@ -71,7 +72,7 @@ st.markdown("""
 
 #######################
 # Load data
-df_energy = pd.read_csv('data/energy-irl-results.csv')
+df_energy = pd.read_csv('energy-irl-results.csv')
 
 #######################
 # Selection functions
@@ -105,9 +106,9 @@ ls_dates = df_energy.groupby(['date']).count().index
 selected_date = st.selectbox('Select a date', ls_dates) #date_list   
 
 # ENERGY
-df_energy_date = df_energy[df_energy['date'] == selected_date]
+today = datetime.today().strftime('%Y-%m-%d')
+df_energy_date = df_energy[df_energy['date'] == today]
 df_energy_plot = energy_differ(df_energy_date)
-print(df_energy_date)
 
 # ACTIVITY
 df_activity = df_energy_date[df_energy_date['section'] != 'REST']
