@@ -25,3 +25,4 @@ FOOD/500/20,2024-11-08T14:55:00+01:00,"{'dateTime': '2024-11-08T15:25:00+01:00',
 FOOD/500/10,2024-11-08T15:30:00+01:00,"{'dateTime': '2024-11-08T16:00:00+01:00', 'timeZone': 'Europe/Stockholm'}",Protein bars,0
 FOOD/140/25,2024-11-09T04:38:00+01:00,"{'dateTime': '2024-11-09T05:08:00+01:00', 'timeZone': 'Europe/Stockholm'}",Protein shake,2
 FOOD/500/20,2024-11-09T07:43:00+01:00,"{'dateTime': '2024-11-09T08:13:00+01:00', 'timeZone': 'Europe/Stockholm'}",Porridge,0
+FOOD/500/20,2024-11-09T10:32:00+01:00,"{'dateTime': '2024-11-09T11:02:00+01:00', 'timeZone': 'Europe/Stockholm'}",Indian curry with rice and <span>chickpeas</span>,0
