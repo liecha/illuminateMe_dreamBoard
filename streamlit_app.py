@@ -3,7 +3,7 @@
 import streamlit as st
 import pandas as pd
 import altair as alt
-from connection import main
+#from connection import main
 
 #######################
 # Page configuration
