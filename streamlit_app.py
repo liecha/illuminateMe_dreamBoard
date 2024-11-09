@@ -1,7 +1,6 @@
 #######################
 # Import libraries
 import streamlit as st
-from datetime import datetime
 import pandas as pd
 import altair as alt
 
@@ -104,7 +103,6 @@ st.subheader('Emelie Chandni Jutvik')
 # SELECTED DATES
 ls_dates = df_energy.groupby(['date']).count().index.values
 reverse_array = ls_dates[::-1]
-print(reverse_array)
 selected_date = st.selectbox('Select a date', reverse_array) #date_list   
 
 # ENERGY
