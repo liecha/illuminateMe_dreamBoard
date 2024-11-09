@@ -1,5 +1,6 @@
 streamlit
-streamlit-calendar
 pandas
 altair
 plotly
+psycopg2
+sqlalchemy

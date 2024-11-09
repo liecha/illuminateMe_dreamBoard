@@ -71,7 +71,13 @@ st.markdown("""
 
 #######################
 # Load data
-df_energy = pd.read_csv('energy-irl-results.csv')
+#df_energy = pd.read_csv('energy-irl-results.csv')
+
+# Initialize connection.
+conn = st.connection("postgresql", type="sql")
+
+# Perform query.
+df_energy = conn.query('SELECT * FROM energy_balance;', ttl="10m")
 
 #######################
 # Selection functions
