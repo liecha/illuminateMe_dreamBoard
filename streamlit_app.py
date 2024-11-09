@@ -104,7 +104,7 @@ st.subheader('Emelie Chandni Jutvik')
 # SELECTED DATES
 ls_dates = df_energy.groupby(['date']).count().index
 today = datetime.today().strftime('%Y-%m-%d')
-selected_date = st.selectbox('Select a date', ls_dates, index='2024-11-09') #date_list   
+selected_date = st.selectbox('Select a date', ls_dates) #date_list   
 
 # ENERGY
 
