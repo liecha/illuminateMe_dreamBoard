@@ -3,3 +3,4 @@ pandas
 altair
 plotly
 sqlalchemy
+psycopg2-binary
