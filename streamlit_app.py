@@ -102,9 +102,10 @@ st.subheader('Emelie Chandni Jutvik')
 
 #######################
 # SELECTED DATES
-ls_dates = df_energy.groupby(['date']).count().index.to_list()
-ls_dates = ls_dates.sort(reverse=True)
-selected_date = st.selectbox('Select a date', ls_dates) #date_list   
+ls_dates = df_energy.groupby(['date']).count().index.values
+reverse_array = ls_dates[::-1]
+print(reverse_array)
+selected_date = st.selectbox('Select a date', reverse_array) #date_list   
 
 # ENERGY
 
