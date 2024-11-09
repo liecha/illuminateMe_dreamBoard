@@ -103,11 +103,12 @@ st.subheader('Emelie Chandni Jutvik')
 #######################
 # SELECTED DATES
 ls_dates = df_energy.groupby(['date']).count().index
-selected_date = st.selectbox('Select a date', ls_dates) #date_list   
+today = datetime.today().strftime('%Y-%m-%d')
+selected_date = st.selectbox('Select a date', ls_dates, index=today) #date_list   
 
 # ENERGY
-today = datetime.today().strftime('%Y-%m-%d')
-df_energy_date = df_energy[df_energy['date'] == today]
+
+df_energy_date = df_energy[df_energy['date'] == selected_date]
 df_energy_plot = energy_differ(df_energy_date)
 
 # ACTIVITY
