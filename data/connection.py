@@ -84,13 +84,13 @@ def main():
                 storage.append(data)
         if calendars[j] == 'primary':            
             df_food = pd.DataFrame(storage)
-            df_food.to_csv('irl_calendars/food_irl.csv', index=False)
+            df_food.to_csv('data/irl_calendars/food_irl.csv', index=False)
         if calendars[j] == 'sc3ios5mprpkoi8179bh2argg0@group.calendar.google.com':
             df_walk = pd.DataFrame(storage)
-            df_walk.to_csv('irl_calendars/walk_irl.csv', index=False)
+            df_walk.to_csv('data/irl_calendars/walk_irl.csv', index=False)
         if calendars[j] == '2e7bb5ea43738363ea033e8081f6c250499d1b16604d331bf5033b8f6f56413d@group.calendar.google.com':
             df_training = pd.DataFrame(storage)
-            df_training.to_csv('irl_calendars/training_irl.csv', index=False)
+            df_training.to_csv('data/irl_calendars/training_irl.csv', index=False)
         
     if not events:
       print("No upcoming events found.")
