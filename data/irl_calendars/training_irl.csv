@@ -1,0 +1,5 @@
+label,start,end,note,unknown_1
+BIKE/RMP/188,2024-11-04T13:22:00+01:00,"{'dateTime': '2024-11-04T13:53:00+01:00', 'timeZone': 'Europe/Stockholm'}",1,1
+STR/BODYPUMP/225,2024-11-04T14:00:00+01:00,"{'dateTime': '2024-11-04T14:45:00+01:00', 'timeZone': 'Europe/Stockholm'}",0,0
+RUN/10km5'07''/505,2024-11-05T14:58:00+01:00,"{'dateTime': '2024-11-05T16:14:00+01:00', 'timeZone': 'Europe/Stockholm'}",1,1
+BIKE/TRIP/472,2024-11-06T14:42:00+01:00,"{'dateTime': '2024-11-06T15:47:00+01:00', 'timeZone': 'Europe/Stockholm'}",1,1

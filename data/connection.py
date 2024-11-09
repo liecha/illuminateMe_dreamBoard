@@ -39,14 +39,14 @@ def main():
 
     # Call the Calendar API
     start = '2024-11-04T00:00:00.000000Z'
-    date = (datetime.datetime.utcnow() - datetime.timedelta(days=1)).isoformat() + "Z"  # 'Z' indicates UTC time
-    print(type(date))
-    print("Getting the upcoming 10 events")
-    
+    #date = (datetime.datetime.utcnow() - datetime.timedelta(days=1)).isoformat() + "Z"  # 'Z' indicates UTC time
+    #print(type(date))
+    print("Getting the upcoming events from 2024-11-04")
     calendars = [
         'primary',  # food
         'sc3ios5mprpkoi8179bh2argg0@group.calendar.google.com', # walk
-        '2e7bb5ea43738363ea033e8081f6c250499d1b16604d331bf5033b8f6f56413d@group.calendar.google.com'] # training
+        '2e7bb5ea43738363ea033e8081f6c250499d1b16604d331bf5033b8f6f56413d@group.calendar.google.com' # training
+        ] 
     
     for j in range(0, len(calendars)):
         events_result = (
@@ -54,7 +54,7 @@ def main():
             .list(
                 calendarId=calendars[j],
                 timeMin=start,
-                maxResults=2500,
+                maxResults=100,
                 singleEvents=True,
                 orderBy="startTime",
             )
@@ -64,7 +64,7 @@ def main():
         df_events = pd.DataFrame(events)
         storage = []
         for i in range(0, len(df_events)):
-            if calendars[j] == 'primary': 
+            if calendars[j] == 'primary':               
                 data = {
                     'label': df_events['summary'].iloc[i],
                     'start': df_events['start'].iloc[i].get("dateTime", df_events['start'].iloc[i].get("date")),
@@ -84,13 +84,14 @@ def main():
                 storage.append(data)
         if calendars[j] == 'primary':            
             df_food = pd.DataFrame(storage)
-            df_food.to_csv('../illuminateMe_dreamborad_data/data_calendar_csv/food_irl.csv', index=False)
+            df_food.to_csv('irl_calendars/food_irl.csv', index=False)
         if calendars[j] == 'sc3ios5mprpkoi8179bh2argg0@group.calendar.google.com':
             df_walk = pd.DataFrame(storage)
-            df_walk.to_csv('../illuminateMe_dreamborad_data/data_calendar_csv/walk_irl.csv', index=False)
+            df_walk.to_csv('irl_calendars/walk_irl.csv', index=False)
         if calendars[j] == '2e7bb5ea43738363ea033e8081f6c250499d1b16604d331bf5033b8f6f56413d@group.calendar.google.com':
             df_training = pd.DataFrame(storage)
-            df_training.to_csv('../illuminateMe_dreamborad_data/data_calendar_csv/training_irl.csv', index=False)
+            df_training.to_csv('irl_calendars/training_irl.csv', index=False)
+        
     if not events:
       print("No upcoming events found.")
       return
