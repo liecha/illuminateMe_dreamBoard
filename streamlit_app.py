@@ -77,7 +77,7 @@ df_sleep = pd.read_csv('data/wearable/sleep-results.csv')
 df_calendar = pd.read_csv('data/calendar/calendar-results.csv')
 df_notes = pd.read_csv('data/notes/note-results.csv')
 
-df_energy = pd.read_csv('data/energy-results.csv')
+df_energy = pd.read_csv('data/energy-irl-results.csv')
 #######################
 # Selection functions
 

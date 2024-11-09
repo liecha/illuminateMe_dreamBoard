@@ -1,5 +1,6 @@
 import datetime
 import os.path
+import pandas as pd
 
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
@@ -37,22 +38,59 @@ def main():
     service = build("calendar", "v3", credentials=creds)
 
     # Call the Calendar API
-    now = datetime.datetime.utcnow().isoformat() + "Z"  # 'Z' indicates UTC time
-    print(now)
+    start = '2024-11-04T00:00:00.000000Z'
+    date = (datetime.datetime.utcnow() - datetime.timedelta(days=1)).isoformat() + "Z"  # 'Z' indicates UTC time
+    print(type(date))
     print("Getting the upcoming 10 events")
-    events_result = (
-        service.events()
-        .list(
-            calendarId="415t3mq2llnqge71ihc5hoi04s@group.calendar.google.com", #primary
-            timeMin=now,
-            maxResults=10,
-            singleEvents=True,
-            orderBy="startTime",
+    
+    calendars = [
+        'primary',  # food
+        'sc3ios5mprpkoi8179bh2argg0@group.calendar.google.com', # walk
+        '2e7bb5ea43738363ea033e8081f6c250499d1b16604d331bf5033b8f6f56413d@group.calendar.google.com'] # training
+    
+    for j in range(0, len(calendars)):
+        events_result = (
+            service.events()
+            .list(
+                calendarId=calendars[j],
+                timeMin=start,
+                maxResults=2500,
+                singleEvents=True,
+                orderBy="startTime",
+            )
+            .execute()
         )
-        .execute()
-    )
-    events = events_result.get("items", [])
-
+        events = events_result.get("items", [])
+        df_events = pd.DataFrame(events)
+        storage = []
+        for i in range(0, len(df_events)):
+            if calendars[j] == 'primary': 
+                data = {
+                    'label': df_events['summary'].iloc[i],
+                    'start': df_events['start'].iloc[i].get("dateTime", df_events['start'].iloc[i].get("date")),
+                    'end': df_events['end'].iloc[i],
+                    'note': df_events['description'].iloc[i],
+                    'unknown_1': df_events['sequence'].iloc[i],
+                    }
+                storage.append(data)
+            else:
+                data = {
+                    'label': df_events['summary'].iloc[i],
+                    'start': df_events['start'].iloc[i].get("dateTime", df_events['start'].iloc[i].get("date")),
+                    'end': df_events['end'].iloc[i],
+                    'note': df_events['sequence'].iloc[i],
+                    'unknown_1': df_events['sequence'].iloc[i],
+                    }
+                storage.append(data)
+        if calendars[j] == 'primary':            
+            df_food = pd.DataFrame(storage)
+            df_food.to_csv('../illuminateMe_dreamborad_data/data_calendar_csv/food_irl.csv', index=False)
+        if calendars[j] == 'sc3ios5mprpkoi8179bh2argg0@group.calendar.google.com':
+            df_walk = pd.DataFrame(storage)
+            df_walk.to_csv('../illuminateMe_dreamborad_data/data_calendar_csv/walk_irl.csv', index=False)
+        if calendars[j] == '2e7bb5ea43738363ea033e8081f6c250499d1b16604d331bf5033b8f6f56413d@group.calendar.google.com':
+            df_training = pd.DataFrame(storage)
+            df_training.to_csv('../illuminateMe_dreamborad_data/data_calendar_csv/training_irl.csv', index=False)
     if not events:
       print("No upcoming events found.")
       return
