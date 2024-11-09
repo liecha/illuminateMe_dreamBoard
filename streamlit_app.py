@@ -72,7 +72,7 @@ st.markdown("""
 
 #######################
 # Load data
-df_energy = pd.read_csv('energy-irl-results.csv')
+df_energy = pd.read_csv('data/energy-irl-results.csv')
 
 #######################
 # Selection functions
