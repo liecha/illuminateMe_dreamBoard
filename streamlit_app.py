@@ -78,6 +78,7 @@ conn = st.connection("postgresql", type="sql")
 
 # Perform query.
 df_energy = conn.query('SELECT * FROM energy_balance;', ttl="10m")
+print(df_energy)
 
 #######################
 # Selection functions
