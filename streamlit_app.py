@@ -3,7 +3,6 @@
 import streamlit as st
 import pandas as pd
 import altair as alt
-from data.connection import main
 
 #######################
 # Page configuration
@@ -72,7 +71,6 @@ st.markdown("""
 
 #######################
 # Load data
-main()
 df_energy = pd.read_csv('data/energy-irl-results.csv')
 
 #######################
