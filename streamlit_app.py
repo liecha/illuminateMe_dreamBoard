@@ -4,6 +4,14 @@ import streamlit as st
 import pandas as pd
 import altair as alt
 
+from data.google_connection import get_calendar_data
+from data.data_prepp import data_processing
+from data.db_connection import write_to_db
+
+get_calendar_data()
+data_processing()
+write_to_db()
+
 #######################
 # Page configuration
 st.set_page_config(
@@ -71,13 +79,13 @@ st.markdown("""
 
 #######################
 # Load data
-df_energy = pd.read_csv('energy-irl-results.csv')
+#df_energy = pd.read_csv('energy-irl-results.csv')
 
 # Initialize connection.
-#conn = st.connection("postgresql", type="sql")
+conn = st.connection("postgresql", type="sql")
 
 # Perform query.
-#df_energy = conn.query('SELECT * FROM energy_balance;', ttl="10m")
+df_energy = conn.query('SELECT * FROM energy_balance;', ttl="10m")
 #print(df_energy)
 
 #######################
@@ -100,6 +108,24 @@ def energy_differ(df_energy_date):
     df_energy_date_final = pd.concat([df_e, df_acc])
     return df_energy_date_final
 
+### PROTEIN
+def protein_differ(df_energy_date):
+    data_p = {
+        'protein': -1 * df_energy_date['protein'].values,
+        'time':df_energy_date['time'].values,
+        'label': ['input'] * len(df_energy_date)
+        }
+    df_p = pd.DataFrame(data_p)
+   
+    data_acc = {
+        'protein': df_energy_date['pro_acc_clean'].values,
+        'time':df_energy_date['time'].values,
+        'label': ['protein_acc'] * len(df_energy_date)
+        }
+    df_acc = pd.DataFrame(data_acc)
+    df_energy_date_final = pd.concat([df_p, df_acc])
+    return df_energy_date_final
+
 
 #######################
 # Dashboard Main Panel
@@ -113,9 +139,12 @@ reverse_array = ls_dates[::-1]
 selected_date = st.selectbox('Select a date', reverse_array) #date_list   
 
 # ENERGY
-
 df_energy_date = df_energy[df_energy['date'] == selected_date]
 df_energy_plot = energy_differ(df_energy_date)
+
+# PROTEIN
+df_protein_plot = protein_differ(df_energy_date)
+print(df_protein_plot)
 
 # ACTIVITY
 df_activity = df_energy_date[df_energy_date['section'] != 'REST']
@@ -128,12 +157,12 @@ with col[0]:
     st.caption("_:blue[Energy inputs/outputs]_ at selected day")
     st.bar_chart(df_energy_plot, x="time", y="energy", color="label") 
     
+    st.markdown('#### Protein intake') 
+    st.caption("_:blue[Protein intake/accumulated intake]_ at selected day")
+    st.bar_chart(df_protein_plot, x="time", y="protein", color="label") 
+    
     
 with col[1]: 
     st.markdown('#### Activity')  
     st.caption("_:blue[Wearable activities]_ from selected day")
     st.bar_chart(df_energy_date, x="time", y="calorie", color="section") 
-    
-
-
-    
