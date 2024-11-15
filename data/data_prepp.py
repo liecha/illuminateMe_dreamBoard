@@ -30,6 +30,8 @@ def food_sectioning(df_food):
             'section': string_array[0],
             'calorie': int(string_array[1]),
             'protein': int(string_array[2]),
+            'carb': int(string_array[3]),
+            'fat': int(string_array[4]),
             'note': df_food['note'].iloc[i],
         }
         temp_storage_food.append(data)
@@ -56,19 +58,27 @@ def training_sectioning(df_training):
     temp_storage_training = []
     for i in range(0, len(df_training)):
         string_array = df_training['label'].iloc[i].split('/')
-        data = {
-            'date': df_training['date'].iloc[i],
-            'time': df_training['time'].iloc[i],
-            'section': string_array[0],
-            'type': string_array[1],
-            'calorie': -1 * int(string_array[2]),
-            'note': df_training['note'].iloc[i],
-        }
+        if len(string_array) == 4:
+            data = {
+                'date': df_training['date'].iloc[i],
+                'time': df_training['time'].iloc[i],
+                'section': string_array[0],
+                'type': string_array[1] + 'km (' + string_array[3] + ')',
+                'calorie': -1 * int(string_array[2]),
+                'note': df_training['note'].iloc[i],
+            }
+        else:
+            data = {
+                'date': df_training['date'].iloc[i],
+                'time': df_training['time'].iloc[i],
+                'section': string_array[0],
+                'type': string_array[1],
+                'calorie': -1 * int(string_array[2]),
+                'note': df_training['note'].iloc[i],
+            }
         temp_storage_training.append(data)
     df_temp_training = pd.DataFrame(temp_storage_training)
     return df_temp_training
-
-
 
 def data_processing():
     
@@ -84,6 +94,7 @@ def data_processing():
     df_walk_irl = pd.read_csv('data/irl_calendars/walk_irl.csv').sort_values(['start'])
     df_training_irl = pd.read_csv('data/irl_calendars/training_irl.csv').sort_values(['start'])
     df_energy = pd.read_csv('data/irl_calendars/energy_template.csv')
+    print('All data from the calendars are loaded...')
     
     # Prepare datasets
     df_food_irl = date_time_insert(df_food_irl, "%Y-%m-%dT%H:%M:%S+01:00")
@@ -112,7 +123,7 @@ def data_processing():
         temp_store_energy.append(df_energy_day)
     
     df_energy_result = pd.concat(temp_store_energy)
-    df_energy_result = df_energy_result[['date', 'time', 'section', 'calorie', 'protein', 'distance', 'type', 'note']]
+    df_energy_result = df_energy_result[['date', 'time', 'section', 'calorie', 'protein', 'carb', 'fat', 'distance', 'type', 'note']]
     df_energy_result = df_energy_result.fillna(0).sort_values(['date', 'time'])
     
     ls_dates = df_energy_result.groupby(['date']).count().index
@@ -140,6 +151,11 @@ def data_processing():
             new_column_acc.append(df_energy_acc['protein'].iloc[i])
         else:
             new_column_acc.append(df_energy_acc['protein_acc'].iloc[i+1])
-    df_energy_acc.insert(6, 'pro_acc_clean', new_column_acc)
-        
+    df_energy_acc.insert(6, 'pro_acc_clean', new_column_acc)       
     df_energy_acc.to_csv('data/energy-irl-results.csv', index=False)
+
+
+
+
+
+

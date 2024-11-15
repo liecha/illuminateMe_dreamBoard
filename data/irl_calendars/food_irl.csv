@@ -1,33 +1,64 @@
 label,start,end,note,unknown_1
-FOOD/500/20,2024-11-04T07:30:00+01:00,"{'dateTime': '2024-11-04T08:00:00+01:00', 'timeZone': 'Europe/Stockholm'}",Porridge,0
-FOOD/500/20,2024-11-04T11:00:00+01:00,"{'dateTime': '2024-11-04T11:30:00+01:00', 'timeZone': 'Europe/Stockholm'}",Porridge,0
-FOOD/500/20,2024-11-04T16:00:00+01:00,"{'dateTime': '2024-11-04T16:30:00+01:00', 'timeZone': 'Europe/Stockholm'}","Broccoli, kaki, veg sausage, coleslaw, plum, egg, mozzarella",0
-FOOD/1000/10,2024-11-04T16:30:00+01:00,"{'dateTime': '2024-11-04T17:00:00+01:00', 'timeZone': 'Europe/Stockholm'}","Protein bars, candy",0
-FOOD/500/20,2024-11-05T06:30:00+01:00,"{'dateTime': '2024-11-05T07:00:00+01:00', 'timeZone': 'Europe/Stockholm'}",Porridge,0
-FOOD/500/20,2024-11-05T10:00:00+01:00,"{'dateTime': '2024-11-05T10:30:00+01:00', 'timeZone': 'Europe/Stockholm'}",Porridge,0
-FOOD/150/2,2024-11-05T12:30:00+01:00,"{'dateTime': '2024-11-05T13:00:00+01:00', 'timeZone': 'Europe/Stockholm'}","Sandwish, butter, peanut butter",1
-FOOD/115/0,2024-11-05T14:00:00+01:00,"{'dateTime': '2024-11-05T14:30:00+01:00', 'timeZone': 'Europe/Stockholm'}",Carbs,0
-FOOD/500/20,2024-11-05T16:30:00+01:00,"{'dateTime': '2024-11-05T17:00:00+01:00', 'timeZone': 'Europe/Stockholm'}","Broccoli, kaki, veg sausage, coleslaw, plum, egg, mozzarella",0
-FOOD/400/10,2024-11-05T17:00:00+01:00,"{'dateTime': '2024-11-05T17:30:00+01:00', 'timeZone': 'Europe/Stockholm'}",Protein bars,0
-FOOD/500/20,2024-11-06T06:30:00+01:00,"{'dateTime': '2024-11-06T07:00:00+01:00', 'timeZone': 'Europe/Stockholm'}",Porridge,0
-FOOD/500/20,2024-11-06T10:00:00+01:00,"{'dateTime': '2024-11-06T10:30:00+01:00', 'timeZone': 'Europe/Stockholm'}",Porridge,0
-FOOD/150/2,2024-11-06T13:00:00+01:00,"{'dateTime': '2024-11-06T13:30:00+01:00', 'timeZone': 'Europe/Stockholm'}","Sandwish, butter, peanut butter",0
-FOOD/500/20,2024-11-06T16:30:00+01:00,"{'dateTime': '2024-11-06T17:00:00+01:00', 'timeZone': 'Europe/Stockholm'}","Broccoli, kaki, veg sausage, coleslaw, plum, egg, mozzarella",0
-FOOD/500/10,2024-11-06T17:00:00+01:00,"{'dateTime': '2024-11-06T17:30:00+01:00', 'timeZone': 'Europe/Stockholm'}",Protein bars,0
-FOOD/500/20,2024-11-07T07:30:00+01:00,"{'dateTime': '2024-11-07T08:00:00+01:00', 'timeZone': 'Europe/Stockholm'}",Porridge,0
-FOOD/150/2,2024-11-07T13:30:00+01:00,"{'dateTime': '2024-11-07T14:00:00+01:00', 'timeZone': 'Europe/Stockholm'}","Sandwish, butter, peanut butter",0
-FOOD/115/0,2024-11-07T14:30:00+01:00,"{'dateTime': '2024-11-07T15:00:00+01:00', 'timeZone': 'Europe/Stockholm'}",Carbs,0
-FOOD/500/20,2024-11-07T16:00:00+01:00,"{'dateTime': '2024-11-07T16:30:00+01:00', 'timeZone': 'Europe/Stockholm'}","Broccoli, veg. burger, halloumi, egg, watermelon, grapes, coleslaw, bea",0
-FOOD/300/20,2024-11-07T16:30:00+01:00,"{'dateTime': '2024-11-07T17:00:00+01:00', 'timeZone': 'Europe/Stockholm'}",Proteinbars,0
-FOOD/500/20,2024-11-08T06:20:00+01:00,"{'dateTime': '2024-11-08T06:50:00+01:00', 'timeZone': 'Europe/Stockholm'}",Porridge,0
-FOOD/500/20,2024-11-08T09:30:00+01:00,"{'dateTime': '2024-11-08T10:00:00+01:00', 'timeZone': 'Europe/Stockholm'}",Porridge,0
-FOOD/500/20,2024-11-08T14:55:00+01:00,"{'dateTime': '2024-11-08T15:25:00+01:00', 'timeZone': 'Europe/Stockholm'}","Watermelon, grapes, coleslaw, veg sausage, broccoli, bea, halloumi, egg",1
-FOOD/500/10,2024-11-08T15:30:00+01:00,"{'dateTime': '2024-11-08T16:00:00+01:00', 'timeZone': 'Europe/Stockholm'}",Protein bars,0
-FOOD/140/25,2024-11-09T04:38:00+01:00,"{'dateTime': '2024-11-09T05:08:00+01:00', 'timeZone': 'Europe/Stockholm'}",Protein shake,2
-FOOD/500/20,2024-11-09T07:43:00+01:00,"{'dateTime': '2024-11-09T08:13:00+01:00', 'timeZone': 'Europe/Stockholm'}",Porridge,0
-FOOD/500/20,2024-11-09T10:32:00+01:00,"{'dateTime': '2024-11-09T11:02:00+01:00', 'timeZone': 'Europe/Stockholm'}",Indian curry with rice and <span>chickpeas</span>,0
-FOOD/250/15,2024-11-09T13:45:00+01:00,"{'dateTime': '2024-11-09T14:15:00+01:00', 'timeZone': 'Europe/Stockholm'}","Protein bar, piece of choclate/coffe",0
-FOOD/500/15,2024-11-09T16:30:00+01:00,"{'dateTime': '2024-11-09T17:00:00+01:00', 'timeZone': 'Europe/Stockholm'}","Falaffel, egg, halloumi, watermelon, broccoli, grapes, coleslaw, bea",0
-FOOD/500/15,2024-11-09T17:00:00+01:00,"{'dateTime': '2024-11-09T17:30:00+01:00', 'timeZone': 'Europe/Stockholm'}","Protein bar, candy",0
-FOOD/140/25,2024-11-10T04:52:00+01:00,"{'dateTime': '2024-11-10T05:22:00+01:00', 'timeZone': 'Europe/Stockholm'}","Protein shake, collagogen, msm, vitamins D, multivitamin",0
-FOOD/500/20,2024-11-10T07:30:00+01:00,"{'dateTime': '2024-11-10T08:00:00+01:00', 'timeZone': 'Europe/Stockholm'}",Porridge,0
+FOOD/600/25/37/35,2024-11-04T07:30:00+01:00,"{'dateTime': '2024-11-04T08:00:00+01:00', 'timeZone': 'Europe/Stockholm'}",Porridge,0
+FOOD/600/25/37/35,2024-11-04T11:01:00+01:00,"{'dateTime': '2024-11-04T11:31:00+01:00', 'timeZone': 'Europe/Stockholm'}",Porridge,1
+FOOD/500/27/26/30,2024-11-04T16:01:00+01:00,"{'dateTime': '2024-11-04T16:31:00+01:00', 'timeZone': 'Europe/Stockholm'}","Broccoli, kaki, veg sausage, coleslaw, plum, egg, mozzarella",1
+FOOD/890/18/175/13,2024-11-04T16:30:00+01:00,"{'dateTime': '2024-11-04T17:00:00+01:00', 'timeZone': 'Europe/Stockholm'}","Protein bars, candy",0
+FOOD/600/25/37/35,2024-11-05T06:30:00+01:00,"{'dateTime': '2024-11-05T07:00:00+01:00', 'timeZone': 'Europe/Stockholm'}",Porridge,0
+FOOD/600/25/37/35,2024-11-05T10:01:00+01:00,"{'dateTime': '2024-11-05T10:31:00+01:00', 'timeZone': 'Europe/Stockholm'}",Porridge,1
+FOOD/127/3/10/8,2024-11-05T12:30:00+01:00,"{'dateTime': '2024-11-05T13:00:00+01:00', 'timeZone': 'Europe/Stockholm'}","Sandwish, butter, peanut butter",1
+FOOD/115/0/30/0,2024-11-05T14:01:00+01:00,"{'dateTime': '2024-11-05T14:31:00+01:00', 'timeZone': 'Europe/Stockholm'}",Carbs,1
+FOOD/500/27/26/30,2024-11-05T16:30:00+01:00,"{'dateTime': '2024-11-05T17:00:00+01:00', 'timeZone': 'Europe/Stockholm'}","Broccoli, kaki, veg sausage, coleslaw, plum, egg, mozzarella",0
+FOOD/440/19/27/18,2024-11-05T17:01:00+01:00,"{'dateTime': '2024-11-05T17:31:00+01:00', 'timeZone': 'Europe/Stockholm'}",Protein bars,1
+FOOD/600/25/37/35,2024-11-06T06:30:00+01:00,"{'dateTime': '2024-11-06T07:00:00+01:00', 'timeZone': 'Europe/Stockholm'}",Porridge,0
+FOOD/600/25/37/35,2024-11-06T10:01:00+01:00,"{'dateTime': '2024-11-06T10:31:00+01:00', 'timeZone': 'Europe/Stockholm'}",Porridge,1
+FOOD/127/3/10/8,2024-11-06T13:01:00+01:00,"{'dateTime': '2024-11-06T13:31:00+01:00', 'timeZone': 'Europe/Stockholm'}","Sandwish, butter, peanut butter",1
+FOOD/500/27/26/30,2024-11-06T16:30:00+01:00,"{'dateTime': '2024-11-06T17:00:00+01:00', 'timeZone': 'Europe/Stockholm'}","Broccoli, kaki, veg sausage, coleslaw, plum, egg, mozzarella",0
+FOOD/443/21/31/27,2024-11-06T17:01:00+01:00,"{'dateTime': '2024-11-06T17:31:00+01:00', 'timeZone': 'Europe/Stockholm'}",Protein bars,1
+FOOD/600/25/37/35,2024-11-07T07:30:00+01:00,"{'dateTime': '2024-11-07T08:00:00+01:00', 'timeZone': 'Europe/Stockholm'}",Porridge,0
+FOOD/127/3/10/8,2024-11-07T13:30:00+01:00,"{'dateTime': '2024-11-07T14:00:00+01:00', 'timeZone': 'Europe/Stockholm'}","Sandwish, butter, peanut butter",0
+FOOD/115/0/30/0,2024-11-07T14:30:00+01:00,"{'dateTime': '2024-11-07T15:00:00+01:00', 'timeZone': 'Europe/Stockholm'}",Carbs,0
+FOOD/500/23/35/27,2024-11-07T16:01:00+01:00,"{'dateTime': '2024-11-07T16:31:00+01:00', 'timeZone': 'Europe/Stockholm'}","Broccoli, veg. burger, halloumi, egg, watermelon, grapes, coleslaw, bea",1
+FOOD/337/19/27/18,2024-11-07T16:30:00+01:00,"{'dateTime': '2024-11-07T17:00:00+01:00', 'timeZone': 'Europe/Stockholm'}",Proteinbars,0
+FOOD/600/25/37/35,2024-11-08T06:20:00+01:00,"{'dateTime': '2024-11-08T06:50:00+01:00', 'timeZone': 'Europe/Stockholm'}",Porridge,0
+FOOD/600/25/37/35,2024-11-08T09:30:00+01:00,"{'dateTime': '2024-11-08T10:00:00+01:00', 'timeZone': 'Europe/Stockholm'}",Porridge,0
+FOOD/520/28/29/31,2024-11-08T14:55:00+01:00,"{'dateTime': '2024-11-08T15:25:00+01:00', 'timeZone': 'Europe/Stockholm'}","Watermelon, grapes, coleslaw, veg sausage, broccoli, bea, halloumi, egg",1
+FOOD/443/21/31/27,2024-11-08T15:30:00+01:00,"{'dateTime': '2024-11-08T16:00:00+01:00', 'timeZone': 'Europe/Stockholm'}",Protein bars,0
+FOOD/600/25/37/35,2024-11-09T04:38:00+01:00,"{'dateTime': '2024-11-09T05:08:00+01:00', 'timeZone': 'Europe/Stockholm'}",Protein shake,2
+FOOD/600/25/37/35,2024-11-09T07:43:00+01:00,"{'dateTime': '2024-11-09T08:13:00+01:00', 'timeZone': 'Europe/Stockholm'}",Porridge,0
+FOOD/500/23/35/27,2024-11-09T10:32:00+01:00,"{'dateTime': '2024-11-09T11:02:00+01:00', 'timeZone': 'Europe/Stockholm'}",Indian curry with rice and <span>chickpeas</span>,0
+FOOD/180/4/12/12,2024-11-09T13:45:00+01:00,"{'dateTime': '2024-11-09T14:15:00+01:00', 'timeZone': 'Europe/Stockholm'}","Protein bar, piece of choclate/coffe",0
+FOOD/476/21/26/27,2024-11-09T16:30:00+01:00,"{'dateTime': '2024-11-09T17:00:00+01:00', 'timeZone': 'Europe/Stockholm'}","Falaffel, egg, halloumi, watermelon, broccoli, grapes, coleslaw, bea",0
+FOOD/396/19/42/18,2024-11-09T17:01:00+01:00,"{'dateTime': '2024-11-09T17:31:00+01:00', 'timeZone': 'Europe/Stockholm'}","Protein bar, candy",1
+FOOD/136/25/3/2,2024-11-10T04:52:00+01:00,"{'dateTime': '2024-11-10T05:22:00+01:00', 'timeZone': 'Europe/Stockholm'}","Protein shake, collagogen, msm, vitamins D, multivitamin",0
+FOOD/600/25/37/35,2024-11-10T07:30:00+01:00,"{'dateTime': '2024-11-10T08:00:00+01:00', 'timeZone': 'Europe/Stockholm'}",Porridge,0
+FOOD/495/21/26/27,2024-11-10T10:30:00+01:00,"{'dateTime': '2024-11-10T11:00:00+01:00', 'timeZone': 'Europe/Stockholm'}",Yoghurt bowl,1
+FOOD/180/4/12/12,2024-11-10T13:01:00+01:00,"{'dateTime': '2024-11-10T13:31:00+01:00', 'timeZone': 'Europe/Stockholm'}","Sandwish, butter, peanut butter, piece of choclate",1
+FOOD/520/28/29/31,2024-11-10T15:30:00+01:00,"{'dateTime': '2024-11-10T16:00:00+01:00', 'timeZone': 'Europe/Stockholm'}","Broccoli, watermelon, grapes, halloumi, coleslaw, bea, egg",0
+FOOD/1000/10/260/0,2024-11-10T16:01:00+01:00,"{'dateTime': '2024-11-10T16:31:00+01:00', 'timeZone': 'Europe/Stockholm'}",Candy,1
+FOOD/600/25/37/35,2024-11-11T07:30:00+01:00,"{'dateTime': '2024-11-11T08:00:00+01:00', 'timeZone': 'Europe/Stockholm'}",Porridge,0
+FOOD/495/21/26/27,2024-11-11T10:20:00+01:00,"{'dateTime': '2024-11-11T10:50:00+01:00', 'timeZone': 'Europe/Stockholm'}",Yoghurt bowl,0
+FOOD/127/3/10/8,2024-11-11T13:01:00+01:00,"{'dateTime': '2024-11-11T13:31:00+01:00', 'timeZone': 'Europe/Stockholm'}","Sandwish, butter, peanut butter",1
+FOOD/434/27/56/11,2024-11-11T15:41:00+01:00,"{'dateTime': '2024-11-11T16:11:00+01:00', 'timeZone': 'Europe/Stockholm'}","Fried rice, red lentils, union, bryssel crout, tofu, sweet chili",0
+FOOD/281/9/26/16,2024-11-11T16:01:00+01:00,"{'dateTime': '2024-11-11T16:31:00+01:00', 'timeZone': 'Europe/Stockholm'}","Protein bar, dates",1
+FOOD/206/8/21/10,2024-11-11T17:01:00+01:00,"{'dateTime': '2024-11-11T17:31:00+01:00', 'timeZone': 'Europe/Stockholm'}",Protein bar,1
+FOOD/136/25/3/2,2024-11-12T04:30:00+01:00,"{'dateTime': '2024-11-12T05:00:00+01:00', 'timeZone': 'Europe/Stockholm'}","Protein shake, vitaminer, msm, kollagoen",3
+FOOD/600/25/37/35,2024-11-12T07:01:00+01:00,"{'dateTime': '2024-11-12T07:31:00+01:00', 'timeZone': 'Europe/Stockholm'}",Porridge,1
+FOOD/495/21/26/27,2024-11-12T10:01:00+01:00,"{'dateTime': '2024-11-12T10:31:00+01:00', 'timeZone': 'Europe/Stockholm'}",Yoghurt bowl,1
+FOOD/173/4/13/6,2024-11-12T13:01:00+01:00,"{'dateTime': '2024-11-12T13:31:00+01:00', 'timeZone': 'Europe/Stockholm'}","Sandwish, butter, peanut butter, piece of protein bar",1
+FOOD/115/0/30/0,2024-11-12T14:01:00+01:00,"{'dateTime': '2024-11-12T14:31:00+01:00', 'timeZone': 'Europe/Stockholm'}",Supercarb,1
+FOOD/413/27/51/11,2024-11-12T16:01:00+01:00,"{'dateTime': '2024-11-12T16:31:00+01:00', 'timeZone': 'Europe/Stockholm'}","Fried rice, red lentils, bryssel crout, onion, egg, tofu, oyster sauce",1
+FOOD/259/15/21/10,2024-11-12T16:30:00+01:00,"{'dateTime': '2024-11-12T17:00:00+01:00', 'timeZone': 'Europe/Stockholm'}",Protein bar mix,1
+FOOD/136/25/3/2,2024-11-13T04:01:00+01:00,"{'dateTime': '2024-11-13T04:31:00+01:00', 'timeZone': 'Europe/Stockholm'}","Protein shake, vitaminer, msm, colagoen",1
+FOOD/600/25/37/35,2024-11-13T07:01:00+01:00,"{'dateTime': '2024-11-13T07:31:00+01:00', 'timeZone': 'Europe/Stockholm'}",Porridge,1
+FOOD/495/21/26/27,2024-11-13T10:01:00+01:00,"{'dateTime': '2024-11-13T10:31:00+01:00', 'timeZone': 'Europe/Stockholm'}",Yoghurt bowl,1
+FOOD/214/5/14/12,2024-11-13T12:49:00+01:00,"{'dateTime': '2024-11-13T13:19:00+01:00', 'timeZone': 'Europe/Stockholm'}","Sandwish, butter, hårdost emmentaler 30, Wafer nicks",0
+FOOD/499/14/26/30,2024-11-13T16:23:00+01:00,"{'dateTime': '2024-11-13T16:53:00+01:00', 'timeZone': 'Europe/Stockholm'}","Broccoil, yellow kiwi, watermelon, veg. burger, halloumi, fried egg, coleslaw, bea",0
+FOOD/351/13/25/16,2024-11-13T17:01:00+01:00,"{'dateTime': '2024-11-13T17:31:00+01:00', 'timeZone': 'Europe/Stockholm'}","Protein bar, dark choklad 85, marabou dukat, dates peanut",1
+FOOD/90/16/2/2,2024-11-14T04:30:00+01:00,"{'dateTime': '2024-11-14T05:00:00+01:00', 'timeZone': 'Europe/Stockholm'}","Protein shake sun warrior, vitamines, msm, colagoen",0
+FOOD/600/25/37/35,2024-11-14T07:01:00+01:00,"{'dateTime': '2024-11-14T07:31:00+01:00', 'timeZone': 'Europe/Stockholm'}",Porridge,1
+FOOD/600/25/37/35,2024-11-14T10:30:00+01:00,"{'dateTime': '2024-11-14T11:00:00+01:00', 'timeZone': 'Europe/Stockholm'}",Porridge,0
+FOOD/62/0/13/0,2024-11-14T14:01:00+01:00,"{'dateTime': '2024-11-14T14:31:00+01:00', 'timeZone': 'Europe/Stockholm'}",Rött äpple royal gala,0
+FOOD/471/20/22/26,2024-11-14T16:30:00+01:00,"{'dateTime': '2024-11-14T17:00:00+01:00', 'timeZone': 'Europe/Stockholm'}","Veg korv, grönkålsbiff, stekt ägg, vattenmelon, broccoli, grillost chili, gul kiwi bea, koreansk morotssallad",0
+FOOD/414/13/32/19,2024-11-14T17:01:00+01:00,"{'dateTime': '2024-11-14T17:31:00+01:00', 'timeZone': 'Europe/Stockholm'}","Protein bars, dadlar peanut, mörk choklad 85%, marabou dukat",0
+FOOD/90/16/2/2,2024-11-15T04:01:00+01:00,"{'dateTime': '2024-11-15T04:31:00+01:00', 'timeZone': 'Europe/Stockholm'}","Protein shake, msm, colagogen, vitamines",0
+FOOD/600/25/37/35,2024-11-15T06:30:00+01:00,"{'dateTime': '2024-11-15T07:00:00+01:00', 'timeZone': 'Europe/Stockholm'}",Porridge,0
