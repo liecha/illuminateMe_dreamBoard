@@ -11,3 +11,4 @@ RUN/10.0/533/5'45'',2024-11-12T14:29:00+01:00,"{'dateTime': '2024-11-12T15:28:00
 BIKE/RPM/200,2024-11-13T14:00:00+01:00,"{'dateTime': '2024-11-13T14:30:00+01:00', 'timeZone': 'Europe/Stockholm'}",0,0
 STR/BODYPUMP/193,2024-11-13T14:30:00+01:00,"{'dateTime': '2024-11-13T15:15:00+01:00', 'timeZone': 'Europe/Stockholm'}",0,0
 SWIM/1400/346,2024-11-14T13:23:00+01:00,"{'dateTime': '2024-11-14T14:11:00+01:00', 'timeZone': 'Europe/Stockholm'}",0,0
+RUN/7.07/337,2024-11-15T12:12:00+01:00,"{'dateTime': '2024-11-15T12:52:00+01:00', 'timeZone': 'Europe/Stockholm'}",0,0

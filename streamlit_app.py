@@ -346,8 +346,6 @@ bmr = bmr(weight, height, age)
 col = st.columns((5.5, 5.5, 5.5), gap='medium') 
 with col[0]:  
     
-    
-
     # SELECTED DATES
     ls_dates = df_energy.groupby(['date']).count().index.values
     reverse_array = ls_dates[::-1]
@@ -421,16 +419,5 @@ with col[2]:
     col2.metric("Carbs", str(df_nutrition_acc['value'].iloc[1]) + ' g', df_nutrition_acc['percent'].iloc[1])
     col3.metric("Fat", str(df_nutrition_acc['value'].iloc[2]) + ' g', df_nutrition_acc['percent'].iloc[2])
      
-    
 
-    
-    
-
-    
-
-    
-    
-    
-    
-    
     
