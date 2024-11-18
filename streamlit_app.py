@@ -13,7 +13,7 @@ from data.db_connection import write_to_db
 # Write to database
 # https://playground.streamlit.app/?q=data-fusion-app
 
-get_calendar_data()
+#get_calendar_data()
 data_processing()
 write_to_db()
 
@@ -104,8 +104,10 @@ div[data-testid="metric-container"] > label[data-testid="stMetricLabel"] > div {
 
 #######################
 # Load data
-#df_energy = pd.read_csv('energy-irl-results.csv')
+df_energy = pd.read_csv('data/energy-irl-results.csv')
 
+
+'''
 def get_data():
     # Initialize connection.
     conn = st.connection("postgresql", type="sql")
@@ -115,6 +117,7 @@ def get_data():
     return df_energy
 
 df_energy = get_data()
+'''
 
 #######################
 # Selection functions

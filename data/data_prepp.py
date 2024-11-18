@@ -36,6 +36,7 @@ def food_sectioning(df_food):
         }
         temp_storage_food.append(data)
     df_temp_food = pd.DataFrame(temp_storage_food)
+    print(df_temp_food)
     return df_temp_food
 
 def walk_sectioning(df_walk):
@@ -52,6 +53,7 @@ def walk_sectioning(df_walk):
         }
         temp_storage_walk.append(data)
     df_temp_walk = pd.DataFrame(temp_storage_walk)
+    print(df_temp_walk)
     return df_temp_walk
 
 def training_sectioning(df_training):
@@ -78,6 +80,7 @@ def training_sectioning(df_training):
             }
         temp_storage_training.append(data)
     df_temp_training = pd.DataFrame(temp_storage_training)
+    print(df_temp_training)
     return df_temp_training
 
 def data_processing():

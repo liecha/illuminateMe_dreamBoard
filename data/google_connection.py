@@ -53,7 +53,7 @@ def get_calendar_data():
             .list(
                 calendarId=calendars[j],
                 timeMin=start,
-                maxResults=100,
+                maxResults=200,
                 singleEvents=True,
                 orderBy="startTime",
             )
