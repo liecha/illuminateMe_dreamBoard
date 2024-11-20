@@ -1,35 +1,35 @@
 name,livsmedel,amount,code
-Yoghurt bowl,Havregryn fullkorn,0.4,FOOD/490/15/38/24
-Yoghurt bowl,Jordnötter rostade saltade,0.1,FOOD/490/15/38/24
-Yoghurt bowl,Pumpafrö,0.1,FOOD/490/15/38/24
-Yoghurt bowl,Jordnötssmör,0.1,FOOD/490/15/38/24
-Yoghurt bowl,Estrella nötmix,0.1,FOOD/490/15/38/24
-Yoghurt bowl,Protinella,0.1,FOOD/490/15/38/24
-Yoghurt bowl,Sojayoghurt,1.0,FOOD/490/15/38/24
-Porridge,Havregryn fullkorn,0.4,FOOD/570/18/34/32
-Porridge,Jordnötter rostade saltade,0.1,FOOD/570/18/34/32
-Porridge,Chiafrö,0.1,FOOD/570/18/34/32
-Porridge,Pumpafrö,0.1,FOOD/570/18/34/32
-Porridge,Hampafrö,0.1,FOOD/570/18/34/32
-Porridge,Jordnötssmör,0.1,FOOD/570/18/34/32
-Porridge,Estrella nötmix,0.1,FOOD/570/18/34/32
-Porridge,Protinella,0.1,FOOD/570/18/34/32
-Porridge,Sojamjölk,1.0,FOOD/570/18/34/32
-Dadelbollar jordnöt,Dadlar färska,2.0,FOOD/1226/18/157/47
-Dadelbollar jordnöt,Havregryn fullkorn,0.4,FOOD/1226/18/157/47
-Dadelbollar jordnöt,Kakaopulver fett 20-22%,0.125,FOOD/1226/18/157/47
-Dadelbollar jordnöt,Kokosflingor,0.35,FOOD/1226/18/157/47
-Dadelbollar jordnöt,Jordnötssmör,0.4,FOOD/1226/18/157/47
-Dadelbollar jordnöt,Kaffe bryggt,0.0,FOOD/1226/18/157/47
-Dadelbollar jordnöt,Salt m. jod,0.0,FOOD/1226/18/157/47
-Dadelbollar protinella,Dadlar färska,2.0,FOOD/1178/15/168/41
-Dadelbollar protinella,Havregryn fullkorn,0.4,FOOD/1178/15/168/41
-Dadelbollar protinella,Kakaopulver fett 20-22%,0.125,FOOD/1178/15/168/41
-Dadelbollar protinella,Kokosflingor,0.35,FOOD/1178/15/168/41
-Dadelbollar protinella,Protinella,0.4,FOOD/1178/15/168/41
-Dadelbollar protinella,Kaffe bryggt,0.0,FOOD/1178/15/168/41
-Dadelbollar protinella,Salt m. jod,0.0,FOOD/1178/15/168/41
-Snickars bars,Dadlar färska,0.51,FOOD/498/10/39/28
-Snickars bars,Jordnötssmör,0.25,FOOD/498/10/39/28
-Snickars bars,Mörk choklad kakao 85%,0.2,FOOD/498/10/39/28
-Snickars bars,Jordnötter rostade saltade,0.15,FOOD/498/10/39/28
+Yoghurt bowl,Havregryn fullkorn,40,490/15/38/24
+Yoghurt bowl,Jordnötter rostade saltade,10,490/15/38/24
+Yoghurt bowl,Pumpafrö,10,490/15/38/24
+Yoghurt bowl,Jordnötssmör,10,490/15/38/24
+Yoghurt bowl,Estrella nötmix,10,490/15/38/24
+Yoghurt bowl,Protinella,10,490/15/38/24
+Yoghurt bowl,Sojayoghurt,100,490/15/38/24
+Porridge,Havregryn fullkorn,40,570/18/34/32
+Porridge,Jordnötter rostade saltade,40,570/18/34/32
+Porridge,Chiafrö,10,570/18/34/32
+Porridge,Pumpafrö,10,570/18/34/32
+Porridge,Hampafrö,10,570/18/34/32
+Porridge,Jordnötssmör,10,570/18/34/32
+Porridge,Estrella nötmix,10,570/18/34/32
+Porridge,Protinella,10,570/18/34/32
+Porridge,Sojamjölk,100,570/18/34/32
+Dadelbollar jordnöt,Dadlar färska,200,1226/18/157/47
+Dadelbollar jordnöt,Havregryn fullkorn,40,1226/18/157/47
+Dadelbollar jordnöt,Kakaopulver fett 20-22%,12.5,1226/18/157/47
+Dadelbollar jordnöt,Kokosflingor,35,1226/18/157/47
+Dadelbollar jordnöt,Jordnötssmör,30,1226/18/157/47
+Dadelbollar jordnöt,Kaffe bryggt,0.0,1226/18/157/47
+Dadelbollar jordnöt,Salt m. jod,0.0,1226/18/157/47
+Dadelbollar protinella,Dadlar färska,200,1178/15/168/41
+Dadelbollar protinella,Havregryn fullkorn,40,1178/15/168/41
+Dadelbollar protinella,Kakaopulver fett 20-22%,12.5,1178/15/168/41
+Dadelbollar protinella,Kokosflingor,35,1178/15/168/41
+Dadelbollar protinella,Protinella,40,1178/15/168/41
+Dadelbollar protinella,Kaffe bryggt,0.0,1178/15/168/41
+Dadelbollar protinella,Salt m. jod,0.0,1178/15/168/41
+Snickars bars,Dadlar färska,51,498/10/39/28
+Snickars bars,Jordnötssmör,25,498/10/39/28
+Snickars bars,Mörk choklad kakao 85%,20,498/10/39/28
+Snickars bars,Jordnötter rostade saltade,15,498/10/39/28

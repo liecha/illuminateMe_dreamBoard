@@ -27,16 +27,17 @@ def food_sectioning(df_food):
         data = {
             'date': df_food['date'].iloc[i],
             'time': df_food['time'].iloc[i],
-            'section': string_array[0],
-            'calorie': int(string_array[1]),
-            'protein': int(string_array[2]),
+            'label': string_array[0],
+            'activity': 'Eat',
+            'distance': 0.0,
+            'energy': int(string_array[1]),
+            'pro': int(string_array[2]),
             'carb': int(string_array[3]),
             'fat': int(string_array[4]),
             'note': df_food['note'].iloc[i],
         }
         temp_storage_food.append(data)
     df_temp_food = pd.DataFrame(temp_storage_food)
-    print(df_temp_food)
     return df_temp_food
 
 def walk_sectioning(df_walk):
@@ -46,41 +47,68 @@ def walk_sectioning(df_walk):
         data = {
             'date': df_walk['date'].iloc[i],
             'time': df_walk['time'].iloc[i],
-            'section': string_array[0],
-            'distance': string_array[1],
-            'calorie': -1 * int(string_array[2]),
+            'label': 'TRAINING',
+            'activity': 'Walk',
+            'distance': str(string_array[1]) + ' km',
+            'energy': -1 * int(string_array[2]),
+            'pro': 0.0,
+            'carb': 0.0,
+            'fat': 0.0,
             'note': df_walk['note'].iloc[i],
         }
         temp_storage_walk.append(data)
     df_temp_walk = pd.DataFrame(temp_storage_walk)
-    print(df_temp_walk)
     return df_temp_walk
+
 
 def training_sectioning(df_training):
     temp_storage_training = []
     for i in range(0, len(df_training)):
         string_array = df_training['label'].iloc[i].split('/')
         if len(string_array) == 4:
-            data = {
-                'date': df_training['date'].iloc[i],
-                'time': df_training['time'].iloc[i],
-                'section': string_array[0],
-                'type': string_array[1] + 'km (' + string_array[3] + ')',
-                'calorie': -1 * int(string_array[2]),
-                'note': df_training['note'].iloc[i],
-            }
+            if string_array[0] == 'RUN':
+                data = {
+                    'date': df_training['date'].iloc[i],
+                    'time': df_training['time'].iloc[i],
+                    'label': 'TRAINING',
+                    'activity': string_array[0],
+                    'distance': str(string_array[1]) + ' km',
+                    'energy': -1 * int(string_array[2]),
+                    'pro': 0.0,
+                    'carb': 0.0,
+                    'fat': 0.0,
+                    'note': string_array[3],
+                }
+                temp_storage_training.append(data)
         else:
-            data = {
-                'date': df_training['date'].iloc[i],
-                'time': df_training['time'].iloc[i],
-                'section': string_array[0],
-                'type': string_array[1],
-                'calorie': -1 * int(string_array[2]),
-                'note': df_training['note'].iloc[i],
-            }
-        temp_storage_training.append(data)
+            if string_array[0] == 'SWIM':
+                data = {
+                    'date': df_training['date'].iloc[i],
+                    'time': df_training['time'].iloc[i],
+                    'label': 'TRAINING',
+                    'activity': string_array[0],
+                    'distance': str(string_array[1]) + ' m',
+                    'energy': -1 * int(string_array[2]),
+                    'pro': 0.0,
+                    'carb': 0.0,
+                    'fat': 0.0,
+                    'note': 'Ingen',
+                }
+                temp_storage_training.append(data)
+            elif string_array[0] == 'STR' or 'BIKE':
+                data = {
+                    'date': df_training['date'].iloc[i],
+                    'time': df_training['time'].iloc[i],
+                    'label': 'TRAINING',
+                    'activity': string_array[0],
+                    'distance': 0.0,
+                    'pro': 0.0,
+                    'carb': 0.0,
+                    'fat': 0.0,
+                    'note': string_array[1],
+                }
+                temp_storage_training.append(data)
     df_temp_training = pd.DataFrame(temp_storage_training)
-    print(df_temp_training)
     return df_temp_training
 
 def data_processing():
@@ -112,8 +140,9 @@ def data_processing():
     df_training_irl = df_training_irl[df_training_irl['date'] <= now]
     df_temp_training_irl = training_sectioning(df_training_irl)
     
-    df_energy['section'] = 'REST'
-    df_energy['calorie'] = -1 * (BMR / 24)
+    df_energy['label'] = 'REST'
+    df_energy['activity'] = 'Bmr'
+    df_energy['energy'] = -1 * (BMR / 24)
     
     ls_dates = df_food_irl.groupby(['date']).count().index
     temp_store_energy = []
@@ -126,7 +155,7 @@ def data_processing():
         temp_store_energy.append(df_energy_day)
     
     df_energy_result = pd.concat(temp_store_energy)
-    df_energy_result = df_energy_result[['date', 'time', 'section', 'calorie', 'protein', 'carb', 'fat', 'distance', 'type', 'note']]
+    df_energy_result = df_energy_result[['date', 'time', 'label', 'activity', 'distance', 'energy', 'pro', 'carb', 'fat', 'note']]
     df_energy_result = df_energy_result.fillna(0).sort_values(['date', 'time'])
     
     ls_dates = df_energy_result.groupby(['date']).count().index
@@ -134,8 +163,8 @@ def data_processing():
     storage = []
     for j in range(0, len(ls_dates)):
         df_day = df_energy_result[df_energy_result['date'] == ls_dates[j]]
-        ls_calories = df_day['calorie'].values
-        ls_protein = df_day['protein'].values
+        ls_calories = df_day['energy'].values
+        ls_protein = df_day['pro'].values
         ls_acc_calories = [ls_calories[0]]
         ls_acc_protein = [ls_protein[0]]
         for i in range(0, len(ls_calories) - 1):
@@ -143,18 +172,10 @@ def data_processing():
             counting_protein = ls_acc_protein[i] + ls_protein[i + 1]
             ls_acc_calories.append(counting_calories) 
             ls_acc_protein.append(counting_protein)
-        df_day.insert(3, 'calorie_acc', ls_acc_calories)
-        df_day.insert(5, 'protein_acc', ls_acc_protein)
-        storage.append(df_day)
-    
-    df_energy_acc = pd.concat(storage)
-    new_column_acc = []
-    for i in range(0, len(df_energy_acc)):  
-        if df_energy_acc['protein'].iloc[i] == 0.0: #df_energy_acc['protein']
-            new_column_acc.append(df_energy_acc['protein'].iloc[i])
-        else:
-            new_column_acc.append(df_energy_acc['protein_acc'].iloc[i+1])
-    df_energy_acc.insert(6, 'pro_acc_clean', new_column_acc)       
+        df_day.insert(6, 'energy_acc', ls_acc_calories)
+        df_day.insert(8, 'protein_acc', ls_acc_protein)
+        storage.append(df_day) 
+    df_energy_acc = pd.concat(storage)    
     df_energy_acc.to_csv('data/energy-irl-results.csv', index=False)
 
 

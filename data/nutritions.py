@@ -15,14 +15,13 @@ meal_dict = {
 
 '''
 
-def locate_eatables(meal_dict):
-    eatables = list(meal_dict.keys())
+def locate_eatables(df_meal):
+    eatables = df_meal['Food'].values
     found_eatables = []
     for j in range(0, len(eatables)):
         df_db = pd.read_csv('data/livsmedelsdatabas.csv')
         this_eatable = eatables[j]
-        look_for_eatable = df_db.loc[df_db['livsmedel'] == this_eatable]  
-       
+        look_for_eatable = df_db.loc[df_db['livsmedel'] == this_eatable]    
         if len(look_for_eatable) == 0:            
             # 1 Look if eatable has other names/alternatives in the database
             contains_eatable = df_db['livsmedel'].str.contains(this_eatable).values
@@ -46,20 +45,20 @@ def locate_eatables(meal_dict):
         print(df_result)
         return df_result
 
-def code_detector(meal_dict, df_meal):
-    key_list = list(meal_dict.keys())
-    values_list = list(meal_dict.values())
+def code_detector(df_meal, df_nutrition):
+    key_list = df_meal['Food'].values
+    values_list = df_meal['Amount (g)'].values
     calories = 0.0
     protein = 0.0
     carb = 0.0
     fat = 0.0
     for i in range(0, len(key_list)):
-        this_eatable = df_meal.loc[df_meal['livsmedel'] == key_list[i]]  
-        calories = int(calories + this_eatable['calorie'].iloc[0] * values_list[i])
-        protein = int(protein +  this_eatable['protein'].iloc[0] * values_list[i])
-        carb = int(carb +  this_eatable['carb'].iloc[0] * values_list[i])
-        fat = int(fat +  this_eatable['fat'].iloc[0] * values_list[i])
-    food_code = 'FOOD/' + str(calories) + '/' + str(protein) + '/' + str(carb) + '/' + str(fat)
+        this_eatable = df_nutrition.loc[df_nutrition['livsmedel'] == key_list[i]]  
+        calories = int(calories + this_eatable['calorie'].iloc[0] * (values_list[i] / 100))
+        protein = int(protein +  this_eatable['protein'].iloc[0] * (values_list[i] / 100))
+        carb = int(carb +  this_eatable['carb'].iloc[0] * (values_list[i] / 100))
+        fat = int(fat +  this_eatable['fat'].iloc[0] * (values_list[i] / 100))
+    food_code = str(calories) + '/' + str(protein) + '/' + str(carb) + '/' + str(fat)
     print('Detta är din genererade kod:')
     print(food_code)
     return food_code
