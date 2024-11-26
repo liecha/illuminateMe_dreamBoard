@@ -12,12 +12,58 @@ def datetime_to_string(this_date, this_time):
     time_str = this_time.strftime("%H:%M")
     return date_str, time_str
 
-def text_dates(df_energy_date):
-    text_date = df_energy_date['date'].iloc[0]
-    current_date = datetime.strptime(text_date, "%Y-%m-%d").day
-    text_month = find_month(df_energy_date)
-    text_weekday = find_weekday(df_energy_date)
-    return current_date, text_month, text_weekday
+def find_month(this_month):
+    text_month = ''
+    if this_month == 1:
+        text_month = 'January'
+    if this_month == 2:
+        text_month = 'February'
+    if this_month == 3:
+        text_month = 'Mars'
+    if this_month == 4:
+        text_month = 'April'
+    if this_month == 5:
+        text_month = 'May'
+    if this_month == 6:
+        text_month = 'June'
+    if this_month == 7:
+        text_month = 'July'
+    if this_month == 8:
+        text_month = 'August'
+    if this_month == 9:
+        text_month = 'September'
+    if this_month == 10:
+        text_month = 'October'
+    if this_month == 11:
+        text_month = 'November'
+    if this_month == 12:
+        text_month = 'December'
+    return text_month
+
+def find_weekday(this_day):
+    text_day = ''
+    if this_day == 0:
+        text_day = 'Monday'
+    if this_day == 1:
+        text_day = 'Thursday'
+    if this_day == 2:
+        text_day = 'Wednesday'
+    if this_day == 3:
+        text_day = 'Turesday'
+    if this_day == 4:
+        text_day = 'Friday'
+    if this_day == 5:
+        text_day = 'Saturday'
+    if this_day == 6:
+        text_day = 'Sunday'
+    return text_day
+
+def text_dates(selected_date):
+    current_date = datetime.strptime(selected_date, "%Y-%m-%d")    
+    current_day = current_date.day
+    text_month = find_month(current_date.month)    
+    text_weekday = find_weekday(current_date.weekday())
+    return current_day, text_month, text_weekday
 
 ### ENERGY
 def energy_differ(df_energy_date):
@@ -123,24 +169,23 @@ def notes_list(df_activity): #date,time,section,distance,type,note
         activities = df_activity['activity'].values
         for i in range(0, len(labels)):
             if labels[i] == 'FOOD':
-                food_string = df_activity['label'].iloc[i] + ': ' + df_activity['note'].iloc[i]
+                food_string =  '🍛 ' + df_activity['note'].iloc[i]
                 note_storage.append(food_string)
             if labels[i] == 'TRAINING':
                 if activities[i] == 'Walk':
-                    walk_string = df_activity['label'].iloc[i] + ': ' + activities[i] + ' ' + df_activity['distance'].iloc[i]
+                    walk_string = '🚶🏻‍♂️ '  + activities[i] + ' ' + df_activity['distance'].iloc[i]
                     note_storage.append(walk_string)
                 if activities[i] == 'SWIM':
-                    swim_string = df_activity['label'].iloc[i] + ': ' + activities[i] + ' ' + df_activity['distance'].iloc[i]
+                    swim_string = '🏊🏼‍♀️ '   + activities[i] + ' ' + df_activity['distance'].iloc[i]
                     note_storage.append(swim_string)
                 if activities[i] == 'RUN':
-                    run_string = df_activity['label'].iloc[i] + ': ' + activities[i] + ' ' + df_activity['distance'].iloc[i]
+                    run_string = '🏃🏽‍♂️ ' + activities[i] + ' ' + df_activity['distance'].iloc[i]
                     note_storage.append(run_string)
                 if activities[i] == 'BIKE':
-                    bike_string = df_activity['label'].iloc[i] + ': ' + activities[i] + ' ' + df_activity['note'].iloc[i] 
+                    bike_string = '🚵🏼 ' + activities[i] + ' ' + df_activity['note'].iloc[i] 
                     note_storage.append(bike_string)
                 if activities[i] == 'STR':
-                    str_string = df_activity['label'].iloc[i] + ': ' + activities[i] + ' ' + df_activity['note'].iloc[i]
-                    note_storage.append(str_string)  
+                    str_string = '🏋🏻‍♂️ ' + activities[i] + ' ' + df_activity['note'].iloc[i] 
                     note_storage.append(str_string)           
         df_activity.insert(6, 'summary', note_storage)
         return df_activity
@@ -152,76 +197,26 @@ def notes_list(df_activity): #date,time,section,distance,type,note
         activities = df_activity['activity'].values
         for i in range(0, len(labels)):
             if labels[i] == 'FOOD':
-                food_string = df_activity['label'].iloc[i] + ': ' + df_activity['note'].iloc[i]
+                food_string = '🍛 ' + df_activity['note'].iloc[i]
                 note_storage.append(food_string)
             if labels[i] == 'TRAINING':
                 if activities[i] == 'Walk':
-                    walk_string = df_activity['label'].iloc[i] + ': ' + activities[i] + ' ' + df_activity['distance'].iloc[i]
+                    walk_string = '🚶🏻‍♂️ ' + activities[i] + ' ' + df_activity['distance'].iloc[i]
                     note_storage.append(walk_string)
                 if activities[i] == 'SWIM':
-                    swim_string = df_activity['label'].iloc[i] + ': ' + activities[i] + ' ' + df_activity['distance'].iloc[i]
+                    swim_string = '🏊🏼‍♀️ '   + activities[i] + ' ' + df_activity['distance'].iloc[i]
                     note_storage.append(swim_string)
                 if activities[i] == 'RUN':
-                    run_string = df_activity['label'].iloc[i] + ': ' + activities[i] + ' ' + df_activity['distance'].iloc[i]
+                    run_string = '🏃🏽‍♂️ ' +  activities[i] + ' ' + df_activity['distance'].iloc[i]
                     note_storage.append(run_string)
                 if activities[i] == 'BIKE':
-                    bike_string = df_activity['label'].iloc[i] + ': ' + activities[i] + ' ' + df_activity['note'].iloc[i] 
+                    bike_string = '🚵🏼 ' + activities[i] + ' ' + df_activity['note'].iloc[i] 
                     note_storage.append(bike_string)
                 if activities[i] == 'STR':
-                    str_string = df_activity['label'].iloc[i] + ': ' + activities[i] + ' ' + df_activity['note'].iloc[i]
+                    str_string = '🏋🏻‍♂️ ' + activities[i] + ' ' + df_activity['note'].iloc[i]
                     note_storage.append(str_string)  
         df_activity_irl.insert(6, 'summary', note_storage)
         return df_activity_irl
-
-def find_month(df_energy_date):
-    current_date = df_energy_date['date'].iloc[0]
-    current_month = datetime.strptime(current_date, "%Y-%m-%d").month
-    text_month = ''
-    if current_month == 1:
-        text_month = 'January'
-    if current_month == 2:
-        text_month = 'February'
-    if current_month == 3:
-        text_month = 'Mars'
-    if current_month == 4:
-        text_month = 'April'
-    if current_month == 5:
-        text_month = 'May'
-    if current_month == 6:
-        text_month = 'June'
-    if current_month == 7:
-        text_month = 'July'
-    if current_month == 8:
-        text_month = 'August'
-    if current_month == 9:
-        text_month = 'September'
-    if current_month == 10:
-        text_month = 'October'
-    if current_month == 11:
-        text_month = 'November'
-    if current_month == 12:
-        text_month = 'December'
-    return text_month
-
-def find_weekday(df_energy_date):
-    current_date = df_energy_date['date'].iloc[0]
-    current_day = datetime.strptime(current_date, "%Y-%m-%d").weekday()
-    text_day = ''
-    if current_day == 0:
-        text_day = 'Monday'
-    if current_day == 1:
-        text_day = 'Thursday'
-    if current_day == 2:
-        text_day = 'Wednesday'
-    if current_day == 3:
-        text_day = 'Turesday'
-    if current_day == 4:
-        text_day = 'Friday'
-    if current_day == 5:
-        text_day = 'Saturday'
-    if current_day == 6:
-        text_day = 'Sunday'
-    return text_day
     
 ### CHART
 def make_donut(source): 

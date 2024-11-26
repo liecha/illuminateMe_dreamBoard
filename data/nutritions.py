@@ -42,7 +42,6 @@ def locate_eatables(df_meal):
     if len(eatables) == len(found_eatables):
         df_result = pd.concat(found_eatables)
         print('Livsmedel som hittats i databasen:')
-        print(df_result)
         return df_result
 
 def code_detector(df_meal, df_nutrition):
@@ -68,7 +67,8 @@ def def_recipie(name_meal, code_meal, meal_dict):
         'name': [name_meal] * len(list(meal_dict.keys())),
         'livsmedel': list(meal_dict.keys()),
         'amount': list(meal_dict.values()),
-        'code' : [code_meal] * len(list(meal_dict.keys()))
+        'code' : [code_meal] * len(list(meal_dict.keys())),
+        'favorite': False
     }
     new_recipie = pd.DataFrame(meal_for_storage)
     print('Detta är dina inputs för denna måltid:')

@@ -102,6 +102,7 @@ def training_sectioning(df_training):
                     'label': 'TRAINING',
                     'activity': string_array[0],
                     'distance': 0.0,
+                    'energy': -1 * int(string_array[2]),
                     'pro': 0.0,
                     'carb': 0.0,
                     'fat': 0.0,
@@ -118,7 +119,7 @@ def data_processing():
     weight = 50
     height = 170
     age = 42
-    BMR = int(447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age))
+    BMR = 1360 #int(447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age))
 
     # Read data
     df_food_irl = pd.read_csv('data/irl_calendars/food_irl.csv').sort_values(['start'])
@@ -175,7 +176,7 @@ def data_processing():
         df_day.insert(6, 'energy_acc', ls_acc_calories)
         df_day.insert(8, 'protein_acc', ls_acc_protein)
         storage.append(df_day) 
-    df_energy_acc = pd.concat(storage)    
+    df_energy_acc = pd.concat(storage) 
     df_energy_acc.to_csv('data/energy-irl-results.csv', index=False)
 
 
