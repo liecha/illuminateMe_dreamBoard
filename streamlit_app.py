@@ -131,7 +131,7 @@ def basal_energy(date_new_post):
     df_energy['date'] = date_new_post
     df_energy['label'] = 'REST'
     df_energy['activity'] = 'Bmr'
-    df_energy['energy'] = -1 * (BMR / 24)
+    df_energy['energy'] = -1 * int(BMR / 24)
     return df_energy
 
 def calc_accumulation(df_data):
@@ -153,6 +153,14 @@ def calc_accumulation(df_data):
         storage.append(df_day)
     df_energy_acc = pd.concat(storage)
     return df_energy_acc
+
+def day_energy(df_energy_date, bmr):
+    df_output = df_energy_date[df_energy_date['label'] == 'TRAINING']
+    list_output_energy = df_output['energy'].values
+    sum_output = bmr
+    for i in range(0, len(list_output_energy)):
+        sum_output = sum_output + (-1 * list_output_energy[i])  
+    return sum_output
 
 # WRITE TO DATABASE
 def store_in_db(data: dict, table_name):
@@ -328,7 +336,7 @@ with tab1:
         
         # ENERGY
         # LOADING DATA
-        #df_energy = pd.read_csv('data/energy-irl-results.csv')
+        #df_energy = pd.read_csv('data/updated-database-results.csv')
         
         # Update every 2 min
         st_autorefresh(interval=2 * 60 * 1000, key="dataframerefresh")
@@ -337,6 +345,8 @@ with tab1:
         # Perform query.
         df_energy = conn.query('SELECT * FROM energy_balance;', ttl="10m")
         df_energy_date = df_energy[df_energy['date'] == selected_date]
+        sum_energy_output = day_energy(df_energy_date, bmr)
+
         if len(df_energy_date) == 0:
             st.markdown('#### Energy balance') 
             st.caption("There is _:blue[no data available]_ for the selected day")
@@ -355,6 +365,7 @@ with tab1:
             st.markdown('#### Energy balance') 
             st.caption("_:blue[Energy inputs/outputs]_ at selected day")
             st.bar_chart(df_energy_plot, x="time", y="energy", color="label") 
+            st.caption("_:blue[Total energy needed]_ at selected day is _:blue[" + str(int(sum_energy_output)) + " kcal]_")  
             
             st.markdown('#### Calendar notes')  
             st.caption("_:blue[Stored calendar notes]_ from selected day")
@@ -408,18 +419,25 @@ with tab1:
             st.caption("There is _:blue[no data available]_ for the selected day")
         else:
             st.markdown('#### Basal metabolic rate') 
-            st.caption("Your body requires _:blue[" + str(bmr) + " kcal]_ at rest")    
+            st.caption("Your body requires _:blue[" + str(bmr) + " kcal]_ at rest")  
 
             st.markdown('#### Nutrition meals') 
-            st.caption("_:blue[Nutrition intake]_ for registered meals at selected day")
-            st.bar_chart(df_nutritions_labeled, x="time", y="nutrient", color="label") 
+            if sum(df_nutritions_labeled['nutrient'].values) == 0.0:
+                st.caption("There are _:blue[no meals registered]_ for the selected day")
+                
+            else:
+                st.caption("_:blue[Nutrition intake]_ for registered meals at selected day")
+                st.bar_chart(df_nutritions_labeled, x="time", y="nutrient", color="label") 
             
             st.markdown('#### Daily nutrition balance') 
-            st.caption("_:blue[Nutrition intake]_ at selected day")    
-            col1, col2, col3 = st.columns(3)
-            col1.metric("Protein", str(df_nutrition_acc['value'].iloc[0]) + ' g', df_nutrition_acc['percent'].iloc[0])
-            col2.metric("Carbs", str(df_nutrition_acc['value'].iloc[1]) + ' g', df_nutrition_acc['percent'].iloc[1])
-            col3.metric("Fat", str(df_nutrition_acc['value'].iloc[2]) + ' g', df_nutrition_acc['percent'].iloc[2])
+            if sum(df_nutritions_labeled['nutrient'].values) == 0.0:
+                st.caption("There are _:blue[no meals registered]_ for the selected day")
+            else:
+                st.caption("_:blue[Nutrition intake]_ at selected day")    
+                col1, col2, col3 = st.columns(3)
+                col1.metric("Protein", str(df_nutrition_acc['value'].iloc[0]) + ' g', df_nutrition_acc['percent'].iloc[0])
+                col2.metric("Carbs", str(df_nutrition_acc['value'].iloc[1]) + ' g', df_nutrition_acc['percent'].iloc[1])
+                col3.metric("Fat", str(df_nutrition_acc['value'].iloc[2]) + ' g', df_nutrition_acc['percent'].iloc[2])
 
 with tab2:
     col = st.columns((5.5, 5.5), gap='medium') 
@@ -470,6 +488,7 @@ with tab3:
             df = pd.DataFrame(temp_store)
             meal_df = st.data_editor(df, key='create_meal_editor', hide_index=True, use_container_width=True)
             if len(meal_df) > 0:
+                print(meal_df)
                 df_food_nutrition = locate_eatables(meal_df)
                 code = code_detector(meal_df, df_food_nutrition)
                 meal_df['code'] = code

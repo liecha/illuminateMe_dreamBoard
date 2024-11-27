@@ -47,16 +47,19 @@ def locate_eatables(df_meal):
 def code_detector(df_meal, df_nutrition):
     key_list = df_meal['Food'].values
     values_list = df_meal['Amount (g)'].values
+    print(df_meal)
+    print(key_list)
+    print(values_list)
     calories = 0.0
     protein = 0.0
     carb = 0.0
     fat = 0.0
     for i in range(0, len(key_list)):
         this_eatable = df_nutrition.loc[df_nutrition['livsmedel'] == key_list[i]]  
-        calories = int(calories + this_eatable['calorie'].iloc[0] * (values_list[i] / 100))
-        protein = int(protein +  this_eatable['protein'].iloc[0] * (values_list[i] / 100))
-        carb = int(carb +  this_eatable['carb'].iloc[0] * (values_list[i] / 100))
-        fat = int(fat +  this_eatable['fat'].iloc[0] * (values_list[i] / 100))
+        calories = int(calories + float(this_eatable['calorie'].iloc[0]) * (values_list[i] / 100))
+        protein = int(protein +  float(this_eatable['protein'].iloc[0]) * (values_list[i] / 100))
+        carb = int(carb +  float(this_eatable['carb'].iloc[0]) * (values_list[i] / 100))
+        fat = int(fat +  float(this_eatable['fat'].iloc[0]) * (int(values_list[i]) / 100))
     food_code = str(calories) + '/' + str(protein) + '/' + str(carb) + '/' + str(fat)
     print('Detta är din genererade kod:')
     print(food_code)

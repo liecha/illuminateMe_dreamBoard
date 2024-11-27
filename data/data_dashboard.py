@@ -120,18 +120,31 @@ def nutrition_content(df_energy_date):
     fat_acc = sum(df_food['fat'].to_list())
     total_acc = sum([protein_acc, carb_acc, fat_acc])
     nutrition_acc = [protein_acc, carb_acc, fat_acc]
-    nutrition_percent = [round((protein_acc/total_acc) * 100, 1) , round((carb_acc/total_acc) * 100, 1) , round((fat_acc/total_acc) * 100, 1)]
-    df_nutrition_acc = pd.DataFrame({
-        "label": [
-            'pro', 
-            'carb', 
-            'fat'],
-        "percent": [
-            str(nutrition_percent[0]) + '%', 
-            str(nutrition_percent[1]) + '%', 
-            str(nutrition_percent[2]) + '%'],
-        "value": nutrition_acc
-    })
+    if total_acc != 0:
+        nutrition_percent = [round((protein_acc/total_acc) * 100, 1) , round((carb_acc/total_acc) * 100, 1) , round((fat_acc/total_acc) * 100, 1)]
+        df_nutrition_acc = pd.DataFrame({
+            "label": [
+                'pro', 
+                'carb', 
+                'fat'],
+            "percent": [
+                str(nutrition_percent[0]) + '%', 
+                str(nutrition_percent[1]) + '%', 
+                str(nutrition_percent[2]) + '%'],
+            "value": nutrition_acc
+            })
+    else:
+        df_nutrition_acc = pd.DataFrame({
+            "label": [
+                'pro', 
+                'carb', 
+                'fat'],
+            "percent": [
+                str(''), 
+                str(''), 
+                str('')],
+            "value": nutrition_acc
+            })
     return df_nutrition_acc
     
 ### PROTEIN
