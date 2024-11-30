@@ -172,8 +172,49 @@ def nutrition_differ(df_energy_date):
     df_nutritions_labeled = pd.concat([df_p, df_c, df_f])
     return df_nutritions_labeled
 
-def notes_list(df_activity): #date,time,section,distance,type,note
-    df_activity = df_activity[['date', 'time', 'label', 'activity', 'distance', 'note']]   
+def create_summary(df):
+    now = datetime.now() # current date and time
+    current_date = now.strftime("%Y-%m-%d")
+    if df['date'].iloc[0] == current_date:
+        time = now.strftime("%H:%M:%S")
+        df_activity_irl = df[df['time'] <= time]
+        note_storage = []
+        labels = df_activity_irl['label'].values
+        activities = df['activity'].values 
+    if df['date'].iloc[0] < current_date:
+        note_storage = []
+        labels = df['label'].values
+        activities = df['activity'].values
+    for i in range(0, len(labels)):
+        if labels[i] == 'REST':
+            rest_string =  '😴 ' + 'Rest'
+            note_storage.append(rest_string)
+        if labels[i] == 'FOOD':
+            food_string =  '🍛 ' + df['note'].iloc[i]
+            note_storage.append(food_string)
+        if labels[i] == 'TRAINING':
+            if activities[i] == 'Walk':
+                walk_string = '🚶🏻‍♂️ '  + activities[i] + ' ' + df['distance'].iloc[i]
+                note_storage.append(walk_string)
+            if activities[i] == 'SWIM':
+                swim_string = '🏊🏼‍♀️ '   + activities[i] + ' ' + df['distance'].iloc[i]
+                note_storage.append(swim_string)
+            if activities[i] == 'RUN':
+                run_string = '🏃🏽‍♂️ ' + activities[i] + ' ' + df['distance'].iloc[i]
+                note_storage.append(run_string)
+            if activities[i] == 'BIKE':
+                bike_string = '🚵🏼 ' + activities[i] + ' ' + df['note'].iloc[i] 
+                note_storage.append(bike_string)
+            if activities[i] == 'STR':
+                str_string = '🏋🏻‍♂️ ' + activities[i] + ' ' + df['note'].iloc[i] 
+                note_storage.append(str_string)  
+            if activities[i] == 'Strength':
+                str_string = '🏋🏻‍♂️ ' + activities[i] + ' ' + df['note'].iloc[i] 
+                note_storage.append(str_string)  
+    df.insert(12, 'summary', note_storage)
+    return df
+    
+def notes_list(df_activity):  
     now = datetime.now() # current date and time
     current_date = now.strftime("%Y-%m-%d")
     if df_activity['date'].iloc[0] < current_date:
@@ -199,15 +240,18 @@ def notes_list(df_activity): #date,time,section,distance,type,note
                     note_storage.append(bike_string)
                 if activities[i] == 'STR':
                     str_string = '🏋🏻‍♂️ ' + activities[i] + ' ' + df_activity['note'].iloc[i] 
-                    note_storage.append(str_string)           
-        df_activity.insert(6, 'summary', note_storage)
+                    note_storage.append(str_string)  
+                if activities[i] == 'Strength':
+                    str_string = '🏋🏻‍♂️ ' + activities[i] + ' ' + df_activity['note'].iloc[i] 
+                    note_storage.append(str_string)         
+        df_activity.insert(12, 'summary', note_storage)
         return df_activity
     if df_activity['date'].iloc[0] == current_date:
         time = now.strftime("%H:%M:%S")
         df_activity_irl = df_activity[df_activity['time'] <= time]
         note_storage = []
         labels = df_activity_irl['label'].values
-        activities = df_activity['activity'].values
+        activities = df_activity['activity'].values 
         for i in range(0, len(labels)):
             if labels[i] == 'FOOD':
                 food_string = '🍛 ' + df_activity['note'].iloc[i]
@@ -228,7 +272,10 @@ def notes_list(df_activity): #date,time,section,distance,type,note
                 if activities[i] == 'STR':
                     str_string = '🏋🏻‍♂️ ' + activities[i] + ' ' + df_activity['note'].iloc[i]
                     note_storage.append(str_string)  
-        df_activity_irl.insert(6, 'summary', note_storage)
+                if activities[i] == 'Strength':
+                    str_string = '🏋🏻‍♂️ ' + activities[i] + ' ' + df_activity['note'].iloc[i] 
+                    note_storage.append(str_string)   
+        df_activity_irl.insert(12, 'summary', note_storage)
         return df_activity_irl
     
 ### CHART

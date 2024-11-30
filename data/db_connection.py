@@ -2,11 +2,11 @@ from sqlalchemy import create_engine
 import pandas as pd
 import io
 
-def write_to_db():
+def write_to_db(file):
     engine = create_engine(
         'postgresql+psycopg2://postgres:1dunSG7x@localhost:5432/energy')
     
-    df_energy = pd.read_csv('data/energy-irl-results.csv')
+    df_energy = pd.read_csv(file)
     
     # Drop old table and create new empty table
     print('Drop table from database and create a new empty table...')

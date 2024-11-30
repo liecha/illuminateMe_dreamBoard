@@ -1,20 +1,5 @@
 import pandas as pd
 
-'''
-Example:
-    
-meal_dict = {
-    'Havregryn fullkorn': 0.4,
-    'Jordnötter rostade saltade': 0.1,
-    'Pumpafrö': 0.1,
-    'Jordnötssmör': 0.1,
-    'Estrella nötmix': 0.1,
-    'Protinella': 0.1,
-    'Sojayoghurt': 1,
-    }
-
-'''
-
 def locate_eatables(df_meal):
     eatables = df_meal['Food'].values
     found_eatables = []
@@ -41,15 +26,11 @@ def locate_eatables(df_meal):
             found_eatables.append(look_for_eatable)
     if len(eatables) == len(found_eatables):
         df_result = pd.concat(found_eatables)
-        print('Livsmedel som hittats i databasen:')
         return df_result
 
 def code_detector(df_meal, df_nutrition):
     key_list = df_meal['Food'].values
     values_list = df_meal['Amount (g)'].values
-    print(df_meal)
-    print(key_list)
-    print(values_list)
     calories = 0.0
     protein = 0.0
     carb = 0.0
@@ -61,8 +42,6 @@ def code_detector(df_meal, df_nutrition):
         carb = int(carb +  float(this_eatable['carb'].iloc[0]) * (values_list[i] / 100))
         fat = int(fat +  float(this_eatable['fat'].iloc[0]) * (int(values_list[i]) / 100))
     food_code = str(calories) + '/' + str(protein) + '/' + str(carb) + '/' + str(fat)
-    print('Detta är din genererade kod:')
-    print(food_code)
     return food_code
 
 def def_recipie(name_meal, code_meal, meal_dict):
@@ -74,8 +53,6 @@ def def_recipie(name_meal, code_meal, meal_dict):
         'favorite': False
     }
     new_recipie = pd.DataFrame(meal_for_storage)
-    print('Detta är dina inputs för denna måltid:')
-    print(new_recipie)
     return new_recipie
 
 def list_all_meals():
