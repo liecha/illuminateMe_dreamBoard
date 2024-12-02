@@ -190,7 +190,7 @@ def create_summary(df):
             rest_string =  '😴 ' + 'Rest'
             note_storage.append(rest_string)
         if labels[i] == 'FOOD':
-            food_string =  '🍛 ' + df['note'].iloc[i]
+            food_string =  '🍲  ' + df['note'].iloc[i]
             note_storage.append(food_string)
         if labels[i] == 'TRAINING':
             if activities[i] == 'Walk':
@@ -214,7 +214,8 @@ def create_summary(df):
     df.insert(12, 'summary', note_storage)
     return df
     
-def notes_list(df_activity):  
+def notes_list(df_activity):
+    df_activity = df_activity.drop(['summary'], axis=1)
     now = datetime.now() # current date and time
     current_date = now.strftime("%Y-%m-%d")
     if df_activity['date'].iloc[0] < current_date:
@@ -223,7 +224,7 @@ def notes_list(df_activity):
         activities = df_activity['activity'].values
         for i in range(0, len(labels)):
             if labels[i] == 'FOOD':
-                food_string =  '🍛 ' + df_activity['note'].iloc[i]
+                food_string =  '🍲  ' + df_activity['note'].iloc[i]
                 note_storage.append(food_string)
             if labels[i] == 'TRAINING':
                 if activities[i] == 'Walk':
@@ -254,7 +255,7 @@ def notes_list(df_activity):
         activities = df_activity['activity'].values 
         for i in range(0, len(labels)):
             if labels[i] == 'FOOD':
-                food_string = '🍛 ' + df_activity['note'].iloc[i]
+                food_string = '🍲  ' + df_activity['note'].iloc[i]
                 note_storage.append(food_string)
             if labels[i] == 'TRAINING':
                 if activities[i] == 'Walk':
